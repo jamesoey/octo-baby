@@ -103,7 +103,6 @@
 		D48291E21745C4720087DD19 = {
 			isa = PBXGroup;
 			children = (
-				D445D4F11746923200E74A14 /* AssetsLibrary.framework */,
 				D48291F61745C4720087DD19 /* BabysFirstYear */,
 				D48291ED1745C4720087DD19 /* Frameworks */,
 				D48291EC1745C4720087DD19 /* Products */,
@@ -121,6 +120,7 @@
 		D48291ED1745C4720087DD19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D445D4F11746923200E74A14 /* AssetsLibrary.framework */,
 				D48291EE1745C4720087DD19 /* UIKit.framework */,
 				D48291F01745C4720087DD19 /* Foundation.framework */,
 				D48291F21745C4720087DD19 /* CoreGraphics.framework */,
