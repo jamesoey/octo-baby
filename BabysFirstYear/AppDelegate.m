@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "OnboardingViewController.h"
+#import "SFlyData.h"
+#import "MainViewController.h"
 
 @implementation AppDelegate
 
@@ -18,7 +21,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    
+    [SflyCore initWithAppDelegate:self];
+    
+    Project *project = [SflyData project];
+    if (project == nil) {
+        self.window.rootViewController = [[OnboardingViewController alloc] init];
+    } else {
+        self.window.rootViewController = [[MainViewController alloc] initWithProject:project];
+    }
+    
+    self.window.backgroundColor = [UIColor grayColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

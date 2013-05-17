@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SflyCore.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,SflyLibraryDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

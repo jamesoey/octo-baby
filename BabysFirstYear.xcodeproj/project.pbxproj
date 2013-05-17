@@ -18,6 +18,17 @@
 		D48292051745C4720087DD19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48292041745C4720087DD19 /* Default@2x.png */; };
 		D48292071745C4720087DD19 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48292061745C4720087DD19 /* Default-568h@2x.png */; };
 		D482920A1745C4720087DD19 /* BabysFirstYear.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D48292081745C4720087DD19 /* BabysFirstYear.xcdatamodeld */; };
+		D48292151745C7200087DD19 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292141745C7200087DD19 /* Project.m */; };
+		D48292181745C7200087DD19 /* Moment.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292171745C7200087DD19 /* Moment.m */; };
+		D482921B1745C7200087DD19 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D482921A1745C7200087DD19 /* Task.m */; };
+		D48292211745C8540087DD19 /* OnboardingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292201745C8540087DD19 /* OnboardingView.m */; };
+		D48292271745C9AB0087DD19 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292261745C9AB0087DD19 /* MainViewController.m */; };
+		D482922A1745C9CA0087DD19 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292291745C9CA0087DD19 /* OnboardingViewController.m */; };
+		D482922D1745CA6A0087DD19 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D482922C1745CA6A0087DD19 /* MainView.m */; };
+		D48292351745CB320087DD19 /* SflyUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292301745CB320087DD19 /* SflyUtility.m */; };
+		D48292361745CB320087DD19 /* SflyData.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292311745CB320087DD19 /* SflyData.m */; };
+		D48292371745CB320087DD19 /* SflyCore.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292341745CB320087DD19 /* SflyCore.m */; };
+		D482923B1745DA600087DD19 /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D482923A1745DA600087DD19 /* TaskTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +47,28 @@
 		D48292041745C4720087DD19 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		D48292061745C4720087DD19 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D48292091745C4720087DD19 /* BabysFirstYear.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BabysFirstYear.xcdatamodel; sourceTree = "<group>"; };
+		D48292131745C7200087DD19 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Project.h; path = Models/Project.h; sourceTree = "<group>"; };
+		D48292141745C7200087DD19 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Project.m; path = Models/Project.m; sourceTree = "<group>"; };
+		D48292161745C7200087DD19 /* Moment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Moment.h; path = Models/Moment.h; sourceTree = "<group>"; };
+		D48292171745C7200087DD19 /* Moment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Moment.m; path = Models/Moment.m; sourceTree = "<group>"; };
+		D48292191745C7200087DD19 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Models/Task.h; sourceTree = "<group>"; };
+		D482921A1745C7200087DD19 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Models/Task.m; sourceTree = "<group>"; };
+		D482921F1745C8540087DD19 /* OnboardingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnboardingView.h; path = Views/OnboardingView.h; sourceTree = "<group>"; };
+		D48292201745C8540087DD19 /* OnboardingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnboardingView.m; path = Views/OnboardingView.m; sourceTree = "<group>"; };
+		D48292251745C9AB0087DD19 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Controllers/MainViewController.h; sourceTree = "<group>"; };
+		D48292261745C9AB0087DD19 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Controllers/MainViewController.m; sourceTree = "<group>"; };
+		D48292281745C9CA0087DD19 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnboardingViewController.h; path = Controllers/OnboardingViewController.h; sourceTree = "<group>"; };
+		D48292291745C9CA0087DD19 /* OnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnboardingViewController.m; path = Controllers/OnboardingViewController.m; sourceTree = "<group>"; };
+		D482922B1745CA6A0087DD19 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainView.h; path = Views/MainView.h; sourceTree = "<group>"; };
+		D482922C1745CA6A0087DD19 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainView.m; path = Views/MainView.m; sourceTree = "<group>"; };
+		D482922F1745CB320087DD19 /* SflyUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SflyUtility.h; path = Utilities/SflyUtility.h; sourceTree = "<group>"; };
+		D48292301745CB320087DD19 /* SflyUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SflyUtility.m; path = Utilities/SflyUtility.m; sourceTree = "<group>"; };
+		D48292311745CB320087DD19 /* SflyData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SflyData.m; path = Utilities/SflyData.m; sourceTree = "<group>"; };
+		D48292321745CB320087DD19 /* SflyData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SflyData.h; path = Utilities/SflyData.h; sourceTree = "<group>"; };
+		D48292331745CB320087DD19 /* SflyCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SflyCore.h; path = Utilities/SflyCore.h; sourceTree = "<group>"; };
+		D48292341745CB320087DD19 /* SflyCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SflyCore.m; path = Utilities/SflyCore.m; sourceTree = "<group>"; };
+		D48292391745DA600087DD19 /* TaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskTableViewCell.h; path = Views/Helpers/TaskTableViewCell.h; sourceTree = "<group>"; };
+		D482923A1745DA600087DD19 /* TaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskTableViewCell.m; path = Views/Helpers/TaskTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +117,10 @@
 		D48291F61745C4720087DD19 /* BabysFirstYear */ = {
 			isa = PBXGroup;
 			children = (
+				D482922E1745CB260087DD19 /* Utilities */,
+				D48292121745C48B0087DD19 /* Controllers */,
+				D48292111745C47E0087DD19 /* Views */,
+				D48292101745C47A0087DD19 /* Models */,
 				D48291FF1745C4720087DD19 /* AppDelegate.h */,
 				D48292001745C4720087DD19 /* AppDelegate.m */,
 				D48292081745C4720087DD19 /* BabysFirstYear.xcdatamodeld */,
@@ -104,6 +141,64 @@
 				D48292061745C4720087DD19 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D48292101745C47A0087DD19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D48292191745C7200087DD19 /* Task.h */,
+				D482921A1745C7200087DD19 /* Task.m */,
+				D48292161745C7200087DD19 /* Moment.h */,
+				D48292171745C7200087DD19 /* Moment.m */,
+				D48292131745C7200087DD19 /* Project.h */,
+				D48292141745C7200087DD19 /* Project.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D48292111745C47E0087DD19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D48292381745DA3E0087DD19 /* Helpers */,
+				D482921F1745C8540087DD19 /* OnboardingView.h */,
+				D48292201745C8540087DD19 /* OnboardingView.m */,
+				D482922B1745CA6A0087DD19 /* MainView.h */,
+				D482922C1745CA6A0087DD19 /* MainView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D48292121745C48B0087DD19 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D48292251745C9AB0087DD19 /* MainViewController.h */,
+				D48292261745C9AB0087DD19 /* MainViewController.m */,
+				D48292281745C9CA0087DD19 /* OnboardingViewController.h */,
+				D48292291745C9CA0087DD19 /* OnboardingViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D482922E1745CB260087DD19 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D482922F1745CB320087DD19 /* SflyUtility.h */,
+				D48292301745CB320087DD19 /* SflyUtility.m */,
+				D48292311745CB320087DD19 /* SflyData.m */,
+				D48292321745CB320087DD19 /* SflyData.h */,
+				D48292331745CB320087DD19 /* SflyCore.h */,
+				D48292341745CB320087DD19 /* SflyCore.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D48292381745DA3E0087DD19 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D48292391745DA600087DD19 /* TaskTableViewCell.h */,
+				D482923A1745DA600087DD19 /* TaskTableViewCell.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +269,17 @@
 				D48291FD1745C4720087DD19 /* main.m in Sources */,
 				D48292011745C4720087DD19 /* AppDelegate.m in Sources */,
 				D482920A1745C4720087DD19 /* BabysFirstYear.xcdatamodeld in Sources */,
+				D48292151745C7200087DD19 /* Project.m in Sources */,
+				D48292181745C7200087DD19 /* Moment.m in Sources */,
+				D482921B1745C7200087DD19 /* Task.m in Sources */,
+				D48292211745C8540087DD19 /* OnboardingView.m in Sources */,
+				D48292271745C9AB0087DD19 /* MainViewController.m in Sources */,
+				D482922A1745C9CA0087DD19 /* OnboardingViewController.m in Sources */,
+				D482922D1745CA6A0087DD19 /* MainView.m in Sources */,
+				D48292351745CB320087DD19 /* SflyUtility.m in Sources */,
+				D48292361745CB320087DD19 /* SflyData.m in Sources */,
+				D48292371745CB320087DD19 /* SflyCore.m in Sources */,
+				D482923B1745DA600087DD19 /* TaskTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
