@@ -32,10 +32,19 @@
 }
 
 - (void)initializeView {
+    
+    self.contentView.frame = CGRectMake(0,0,360, 90);
+    self.clipsToBounds = YES;
+    self.photo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baby0.jpg"]];
+    self.photo.frame = self.contentView.frame;
+    [self.contentView addSubview:self.photo];
+    
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 30)];
     self.titleLabel.text = self.task.caption;
+    self.titleLabel.backgroundColor = [UIColor blackColor];
+    self.titleLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:self.titleLabel];
-
+    
     self.status = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 100, 30)];
     if (self.task.moment == nil) {
         self.status.text = @"NOT DONE";

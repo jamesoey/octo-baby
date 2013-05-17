@@ -35,6 +35,8 @@
 		D4829246174675B70087DD19 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4829242174675B70087DD19 /* MainViewController.m */; };
 		D4829247174675B70087DD19 /* OnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4829244174675B70087DD19 /* OnboardingViewController.m */; };
 		D482924A1746764A0087DD19 /* AssetsLibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = D48292491746764A0087DD19 /* AssetsLibraryController.m */; };
+		FC25189F1746A27B00677D0D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189D1746A27B00677D0D /* Icon.png */; };
+		FC2518A01746A27B00677D0D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189E1746A27B00677D0D /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		D4829245174675B70087DD19 /* OnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnboardingViewController.h; path = Controllers/Views/OnboardingViewController.h; sourceTree = "<group>"; };
 		D48292481746764A0087DD19 /* AssetsLibraryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetsLibraryController.h; path = Controllers/Others/AssetsLibraryController.h; sourceTree = "<group>"; };
 		D48292491746764A0087DD19 /* AssetsLibraryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetsLibraryController.m; path = Controllers/Others/AssetsLibraryController.m; sourceTree = "<group>"; };
+		FC25189D1746A27B00677D0D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		FC25189E1746A27B00677D0D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 		D482923C174674720087DD19 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FC25189D1746A27B00677D0D /* Icon.png */,
+				FC25189E1746A27B00677D0D /* Icon@2x.png */,
 				D482923D174674840087DD19 /* SamplePictures */,
 			);
 			name = Resources;
@@ -313,6 +319,8 @@
 				D445D4F617469D0000E74A14 /* baby2.jpg in Resources */,
 				D445D4F717469D0000E74A14 /* baby1.jpg in Resources */,
 				D445D4F817469D0000E74A14 /* baby0.jpg in Resources */,
+				FC25189F1746A27B00677D0D /* Icon.png in Resources */,
+				FC2518A01746A27B00677D0D /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

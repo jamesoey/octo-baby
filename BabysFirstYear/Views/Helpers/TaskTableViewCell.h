@@ -15,6 +15,7 @@
 @property (nonatomic, retain) Task *task;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UILabel *status;
+@property (nonatomic, retain) UIImageView *photo;
 
 - (void)updateWithTask:(Task*)t;
 

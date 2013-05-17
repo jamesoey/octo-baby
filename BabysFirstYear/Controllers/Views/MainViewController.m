@@ -43,10 +43,9 @@
 - (void) loadView {
     CGRect bounds = [[UIScreen mainScreen] bounds];
     mainView = [[MainView alloc] initWithFrame:bounds project:project];
-    
     mainView.taskTableView.dataSource = self;
     mainView.taskTableView.delegate = self;
-    
+    mainView.taskTableView.backgroundColor = [UIColor clearColor];
     
     self.view = mainView;
 }
@@ -71,6 +70,10 @@
 
 - (int)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 90.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
