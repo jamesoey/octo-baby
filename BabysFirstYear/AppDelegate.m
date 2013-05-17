@@ -22,17 +22,19 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    
     [SflyCore initWithAppDelegate:self];
-    
     Project *project = [SflyData project];
+    
+    self.navController = nil;
     if (project == nil) {
-        self.window.rootViewController = [[OnboardingViewController alloc] init];
+        self.navController = [[UINavigationController alloc] initWithRootViewController:[[OnboardingViewController alloc] init]];
     } else {
-        self.window.rootViewController = [[MainViewController alloc] initWithProject:project];
+        self.navController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithProject:project]];
     }
     
-    self.window.backgroundColor = [UIColor grayColor];
+    [self.navController setNavigationBarHidden:YES];
+    self.window.rootViewController = self.navController;
+    //self.window.backgroundColor = [UIColor grayColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -78,6 +80,20 @@
         } 
     }
 }
+
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskPortrait;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [self.navController.visibleViewController isKindOfClass:[MainViewController class]]) {
+        mask = UIInterfaceOrientationMaskAll;
+    } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        mask = (UIInterfaceOrientationMaskLandscapeLeft|UIInterfaceOrientationMaskLandscapeRight);
+    }
+    
+    return mask;
+}
+
 
 #pragma mark - Core Data stack
 

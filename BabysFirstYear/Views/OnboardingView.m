@@ -23,6 +23,8 @@
 
 
 - (void)initView {
+    
+    
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 100, 40)];
     nameLabel.text = @"Baby's Name";
     [self addSubview:nameLabel];
