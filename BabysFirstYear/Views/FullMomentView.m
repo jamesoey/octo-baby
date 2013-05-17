@@ -29,14 +29,11 @@
     UIImageView *momentImageView = [[UIImageView alloc] initWithFrame:bounds];
     [self addSubview:momentImageView];
     
-    NSString *uid = self.task.moment.uid;
-    
     [[AssetsLibraryController sharedController] imageForURL:self.task.moment.uid success:^(UIImage *image) {
         momentImageView.image = image;
     } failureBlock:^(NSError *error) {
         NSLog(@"ERROR: Cannot add image to FMV image view");
-        }];
-    
+    }];
 }
 
 

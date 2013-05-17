@@ -12,6 +12,8 @@
 
 @interface FullMomentViewController : UIViewController
 
+@property (nonatomic, strong) Task *task;
+@property (nonatomic, strong) UIImageView *photo;
 
 - (id)initWithTask:(Task*)t;
 

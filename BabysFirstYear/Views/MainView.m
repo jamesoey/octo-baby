@@ -25,9 +25,6 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 200, 40)];
     nameLabel.text = self.project.name;
     [self addSubview:nameLabel];
-    
-    self.taskTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 70, 280, 400)];
-    [self addSubview:self.taskTableView];
 }
 
 /*

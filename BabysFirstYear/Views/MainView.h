@@ -13,7 +13,6 @@
 @interface MainView : UIView
 
 @property (nonatomic, retain) Project *project;
-@property (nonatomic, retain) UITableView *taskTableView;
 
 - (id)initWithFrame:(CGRect)frame project:(Project*)p;
 

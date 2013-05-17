@@ -309,8 +309,8 @@
 			children = (
 				D445D5081746A73B00E74A14 /* CaptureMomentViewController.h */,
 				D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */,
-				D4829242174675B70087DD19 /* MainViewController.m */,
 				D4829243174675B70087DD19 /* MainViewController.h */,
+				D4829242174675B70087DD19 /* MainViewController.m */,
 				D4829244174675B70087DD19 /* OnboardingViewController.m */,
 				D4829245174675B70087DD19 /* OnboardingViewController.h */,
 				D445D5051746A5CC00E74A14 /* FullMomentViewController.h */,

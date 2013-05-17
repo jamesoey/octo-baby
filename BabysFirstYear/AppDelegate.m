@@ -11,6 +11,7 @@
 #import "SFlyData.h"
 #import "MainViewController.h"
 #import "Project.h"
+#import "FullMomentViewController.h"
 
 @implementation AppDelegate
 

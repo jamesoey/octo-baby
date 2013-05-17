@@ -10,7 +10,9 @@
 
 @class Project;
 
-@interface MainViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController : UIViewController<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+
+@property (nonatomic, strong) UIPageViewController *pageViewController;
 
 - (id)initWithProject:(Project*)p;
 
