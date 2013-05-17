@@ -35,8 +35,16 @@
     
     self.contentView.frame = CGRectMake(0,0,360, 90);
     self.clipsToBounds = YES;
-    self.photo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"baby0.jpg"]];
-    self.photo.frame = self.contentView.frame;
+    
+    UIImage *photo = [UIImage imageNamed:@"bath.jpg"];
+    CGFloat offsetX = (photo.size.width - self.contentView.frame.size.width)/2.0f;
+    CGFloat offsetY = (photo.size.height - self.contentView.frame.size.height)/2.0f;
+    
+    
+    
+    
+    self.photo = [[UIImageView alloc] initWithImage:photo];
+    self.photo.frame = CGRectMake(-offsetX, -offsetY, photo.size.width, photo.size.height);
     [self.contentView addSubview:self.photo];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 30)];

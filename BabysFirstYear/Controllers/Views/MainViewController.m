@@ -11,6 +11,7 @@
 #import "MainView.h"
 #import "TaskTableViewCell.h"
 #import "SflyData.h"
+#import "Task.h"
 
 @interface MainViewController () {
     Project *project;
@@ -73,7 +74,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
