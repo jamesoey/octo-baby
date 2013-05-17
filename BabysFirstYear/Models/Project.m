@@ -25,7 +25,9 @@
     project.name = name;
 
     
-    [project addTasksObject:[Task taskWithCaption:@"baby's arrival" weeksFromStart:1]];
+    Task *t1 = [Task taskWithCaption:@"baby's arrival" weeksFromStart:1];
+    [project addTasksObject:t1];
+    
     [project addTasksObject:[Task taskWithCaption:@"tiny body part with parent body part" weeksFromStart:2]];
     [project addTasksObject:[Task taskWithCaption:@"family photo" weeksFromStart:3]];
     [project addTasksObject:[Task taskWithCaption:@"baby's nursery or house" weeksFromStart:4]];
@@ -34,7 +36,10 @@
     [project addTasksObject:[Task taskWithCaption:@"being held by family" weeksFromStart:7]];
     [project addTasksObject:[Task taskWithCaption:@"tummy time" weeksFromStart:8]];
     [project addTasksObject:[Task taskWithCaption:@"baby out for a stroll in stroller" weeksFromStart:9]];
-    [project addTasksObject:[Task taskWithCaption:@"baby time/water time" weeksFromStart:10]];
+    
+    Task *t10 = [Task taskWithCaption:@"baby time/water time" weeksFromStart:10];
+    [project addTasksObject:t10];
+    
     [project addTasksObject:[Task taskWithCaption:@"baby in crib" weeksFromStart:11]];
     [project addTasksObject:[Task taskWithCaption:@"baby with hands/feet in mouth" weeksFromStart:12]];
     [project addTasksObject:[Task taskWithCaption:@"cuddle time with mom or dad" weeksFromStart:13]];
