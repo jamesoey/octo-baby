@@ -14,6 +14,7 @@
 
 + (AssetsLibraryController*)sharedController;
 - (void)saveImage:(UIImage*)image toMoment:(Moment*)moment;
+- (void)imageForURL:(NSString*)urlString success:(void (^)(UIImage *image))successBlock failureBlock:(void (^)(NSError *error))failureBlock;
 
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 

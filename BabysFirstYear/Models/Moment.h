@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSSet *tasks;
 
 + (Moment*)moment;
+- (UIImage*)image;
 @end
 
 @interface Moment (CoreDataGeneratedAccessors)

@@ -8,6 +8,7 @@
 
 #import "AssetsLibraryController.h"
 #import "Moment.h"
+#import "SflyCore.h"
 
 @implementation AssetsLibraryController
 
@@ -30,10 +31,38 @@
                                      completionBlock:^(NSURL *assetURL, NSError *error) {
                                          if (error == nil) {
                                              moment.uid = [assetURL absoluteString];
+                                             [SflyCore saveContext];
                                          } else {
                                              NSLog(@"ERROR: Could not write image to photo album");
                                          }
                                      }];
 }
+
+- (void)imageForURL:(NSString*)urlString success:(void (^)(UIImage *image))successBlock failureBlock:(void (^)(NSError *error))failureBlock {
+    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+    {
+        ALAssetRepresentation *rep = [myasset defaultRepresentation];
+        CGImageRef iref = [rep fullResolutionImage];
+        if (iref) {
+            UIImage *image = [UIImage imageWithCGImage:iref];
+            successBlock(image);
+        }
+    };
+    
+    //
+    ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *error)
+    {
+        NSLog(@"booya, cant get image - %@",[error localizedDescription]);
+        if (failureBlock) {
+            failureBlock(error);
+        }
+    };
+    
+    if(urlString && [urlString length]) {
+        NSURL *asseturl = [NSURL URLWithString:urlString];
+        [self.assetsLibrary assetForURL:asseturl
+                       resultBlock:resultblock
+                      failureBlock:failureblock];
+    }}
 
 @end

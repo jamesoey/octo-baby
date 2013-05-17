@@ -9,6 +9,7 @@
 #import "Moment.h"
 #import "SflyUtility.h"
 #import "SflyCore.h"
+#import "AssetsLibraryController.h"
 
 @implementation Moment
 
@@ -22,6 +23,14 @@
     Moment *moment = [NSEntityDescription insertNewObjectForEntityForName:@"Moment" inManagedObjectContext:[SflyCore context]];
     moment.uid = [SflyUtility genUUID];
     return moment;
+}
+
+
+- (UIImage*)image {
+    NSURL *url = [[NSURL alloc] initWithString:@"asdfasdf"];
+    
+
+    
 }
 
 @end

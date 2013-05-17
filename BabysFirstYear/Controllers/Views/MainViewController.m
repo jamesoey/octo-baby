@@ -11,7 +11,10 @@
 #import "MainView.h"
 #import "TaskTableViewCell.h"
 #import "SflyData.h"
+#import "CaptureMomentViewController.h"
+#import "FullMomentViewController.h"
 #import "Task.h"
+#import "Moment.h"
 
 @interface MainViewController () {
     Project *project;
@@ -63,7 +66,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - TableView functions
+#pragma mark - TableView Data Source functions
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [tasks count];
@@ -74,6 +77,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 90.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,5 +90,19 @@
     return cell;
 }
 
+#pragma mark - TableView delegate functions
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    Task *task = [tasks objectAtIndex:indexPath.row];
+    if (task.moment) {
+        NSString *url = task.moment.uid;
+        FullMomentViewController *fmViewController = [[FullMomentViewController alloc] initWithTask:task];
+        [self.navigationController pushViewController:fmViewController animated:YES];
+    } else {
+        CaptureMomentViewController *cmViewController = [[CaptureMomentViewController alloc] initWithTask:task];
+        [self.navigationController pushViewController:cmViewController animated:YES];
+    }
+}
 
 @end

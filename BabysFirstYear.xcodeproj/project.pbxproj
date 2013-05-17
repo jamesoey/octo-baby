@@ -11,6 +11,10 @@
 		D445D4F617469D0000E74A14 /* baby2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F317469D0000E74A14 /* baby2.jpg */; };
 		D445D4F717469D0000E74A14 /* baby1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F417469D0000E74A14 /* baby1.jpg */; };
 		D445D4F817469D0000E74A14 /* baby0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F517469D0000E74A14 /* baby0.jpg */; };
+		D445D50117469FA400E74A14 /* CaptureMomentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D50017469FA400E74A14 /* CaptureMomentView.m */; };
+		D445D5071746A5CC00E74A14 /* FullMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D5061746A5CC00E74A14 /* FullMomentViewController.m */; };
+		D445D50A1746A73B00E74A14 /* CaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */; };
+		D445D50D1746A84600E74A14 /* FullMomentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D50C1746A84600E74A14 /* FullMomentView.m */; };
 		D48291EF1745C4720087DD19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291EE1745C4720087DD19 /* UIKit.framework */; };
 		D48291F11745C4720087DD19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F01745C4720087DD19 /* Foundation.framework */; };
 		D48291F31745C4720087DD19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F21745C4720087DD19 /* CoreGraphics.framework */; };
@@ -60,6 +64,14 @@
 		D445D4F317469D0000E74A14 /* baby2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby2.jpg; path = Resources/SamplePictures/baby2.jpg; sourceTree = "<group>"; };
 		D445D4F417469D0000E74A14 /* baby1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby1.jpg; path = Resources/SamplePictures/baby1.jpg; sourceTree = "<group>"; };
 		D445D4F517469D0000E74A14 /* baby0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby0.jpg; path = Resources/SamplePictures/baby0.jpg; sourceTree = "<group>"; };
+		D445D4FF17469FA400E74A14 /* CaptureMomentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureMomentView.h; path = Views/CaptureMomentView.h; sourceTree = "<group>"; };
+		D445D50017469FA400E74A14 /* CaptureMomentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentView.m; path = Views/CaptureMomentView.m; sourceTree = "<group>"; };
+		D445D5051746A5CC00E74A14 /* FullMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullMomentViewController.h; path = Controllers/Views/FullMomentViewController.h; sourceTree = "<group>"; };
+		D445D5061746A5CC00E74A14 /* FullMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullMomentViewController.m; path = Controllers/Views/FullMomentViewController.m; sourceTree = "<group>"; };
+		D445D5081746A73B00E74A14 /* CaptureMomentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureMomentViewController.h; path = Controllers/Views/CaptureMomentViewController.h; sourceTree = "<group>"; };
+		D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentViewController.m; path = Controllers/Views/CaptureMomentViewController.m; sourceTree = "<group>"; };
+		D445D50B1746A84600E74A14 /* FullMomentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullMomentView.h; path = Views/FullMomentView.h; sourceTree = "<group>"; };
+		D445D50C1746A84600E74A14 /* FullMomentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullMomentView.m; path = Views/FullMomentView.m; sourceTree = "<group>"; };
 		D48291EB1745C4720087DD19 /* BabysFirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabysFirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48291EE1745C4720087DD19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D48291F01745C4720087DD19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -216,6 +228,10 @@
 				D48292201745C8540087DD19 /* OnboardingView.m */,
 				D482922B1745CA6A0087DD19 /* MainView.h */,
 				D482922C1745CA6A0087DD19 /* MainView.m */,
+				D445D4FF17469FA400E74A14 /* CaptureMomentView.h */,
+				D445D50017469FA400E74A14 /* CaptureMomentView.m */,
+				D445D50B1746A84600E74A14 /* FullMomentView.h */,
+				D445D50C1746A84600E74A14 /* FullMomentView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -291,10 +307,14 @@
 		D4829240174675A20087DD19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D445D5081746A73B00E74A14 /* CaptureMomentViewController.h */,
+				D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */,
 				D4829242174675B70087DD19 /* MainViewController.m */,
 				D4829243174675B70087DD19 /* MainViewController.h */,
 				D4829244174675B70087DD19 /* OnboardingViewController.m */,
 				D4829245174675B70087DD19 /* OnboardingViewController.h */,
+				D445D5051746A5CC00E74A14 /* FullMomentViewController.h */,
+				D445D5061746A5CC00E74A14 /* FullMomentViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -410,6 +430,10 @@
 				D4829246174675B70087DD19 /* MainViewController.m in Sources */,
 				D4829247174675B70087DD19 /* OnboardingViewController.m in Sources */,
 				D482924A1746764A0087DD19 /* AssetsLibraryController.m in Sources */,
+				D445D50117469FA400E74A14 /* CaptureMomentView.m in Sources */,
+				D445D5071746A5CC00E74A14 /* FullMomentViewController.m in Sources */,
+				D445D50A1746A73B00E74A14 /* CaptureMomentViewController.m in Sources */,
+				D445D50D1746A84600E74A14 /* FullMomentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
