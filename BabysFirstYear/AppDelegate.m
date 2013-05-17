@@ -10,6 +10,7 @@
 #import "OnboardingViewController.h"
 #import "SFlyData.h"
 #import "MainViewController.h"
+#import "Project.h"
 
 @implementation AppDelegate
 
@@ -27,6 +28,7 @@
     
     self.navController = nil;
     if (project == nil) {
+        project = [Project project];
         self.navController = [[UINavigationController alloc] initWithRootViewController:[[OnboardingViewController alloc] init]];
     } else {
         self.navController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithProject:project]];

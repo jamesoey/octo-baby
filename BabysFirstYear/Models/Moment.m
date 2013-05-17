@@ -7,7 +7,8 @@
 //
 
 #import "Moment.h"
-
+#import "SflyUtility.h"
+#import "SflyCore.h"
 
 @implementation Moment
 
@@ -15,5 +16,12 @@
 @dynamic width;
 @dynamic uid;
 @dynamic tasks;
+
++ (Moment*)moment {
+
+    Moment *moment = [NSEntityDescription insertNewObjectForEntityForName:@"Moment" inManagedObjectContext:[SflyCore context]];
+    moment.uid = [SflyUtility genUUID];
+    return moment;
+}
 
 @end

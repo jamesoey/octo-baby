@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "Moment.h"
 
 @interface AssetsLibraryController : NSObject
 
 + (AssetsLibraryController*)sharedController;
+- (void)saveImage:(UIImage*)image toMoment:(Moment*)moment;
+
+@property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
 
 @end

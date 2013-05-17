@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D445D4F21746923200E74A14 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D445D4F11746923200E74A14 /* AssetsLibrary.framework */; };
+		D445D4F617469D0000E74A14 /* baby2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F317469D0000E74A14 /* baby2.jpg */; };
+		D445D4F717469D0000E74A14 /* baby1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F417469D0000E74A14 /* baby1.jpg */; };
+		D445D4F817469D0000E74A14 /* baby0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D445D4F517469D0000E74A14 /* baby0.jpg */; };
 		D48291EF1745C4720087DD19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291EE1745C4720087DD19 /* UIKit.framework */; };
 		D48291F11745C4720087DD19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F01745C4720087DD19 /* Foundation.framework */; };
 		D48291F31745C4720087DD19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F21745C4720087DD19 /* CoreGraphics.framework */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D445D4F11746923200E74A14 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		D445D4F317469D0000E74A14 /* baby2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby2.jpg; path = Resources/SamplePictures/baby2.jpg; sourceTree = "<group>"; };
+		D445D4F417469D0000E74A14 /* baby1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby1.jpg; path = Resources/SamplePictures/baby1.jpg; sourceTree = "<group>"; };
+		D445D4F517469D0000E74A14 /* baby0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = baby0.jpg; path = Resources/SamplePictures/baby0.jpg; sourceTree = "<group>"; };
 		D48291EB1745C4720087DD19 /* BabysFirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabysFirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48291EE1745C4720087DD19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D48291F01745C4720087DD19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -81,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D445D4F21746923200E74A14 /* AssetsLibrary.framework in Frameworks */,
 				D48291EF1745C4720087DD19 /* UIKit.framework in Frameworks */,
 				D48291F11745C4720087DD19 /* Foundation.framework in Frameworks */,
 				D48291F31745C4720087DD19 /* CoreGraphics.framework in Frameworks */,
@@ -94,6 +103,7 @@
 		D48291E21745C4720087DD19 = {
 			isa = PBXGroup;
 			children = (
+				D445D4F11746923200E74A14 /* AssetsLibrary.framework */,
 				D48291F61745C4720087DD19 /* BabysFirstYear */,
 				D48291ED1745C4720087DD19 /* Frameworks */,
 				D48291EC1745C4720087DD19 /* Products */,
@@ -216,6 +226,9 @@
 		D482923D174674840087DD19 /* SamplePictures */ = {
 			isa = PBXGroup;
 			children = (
+				D445D4F317469D0000E74A14 /* baby2.jpg */,
+				D445D4F417469D0000E74A14 /* baby1.jpg */,
+				D445D4F517469D0000E74A14 /* baby0.jpg */,
 				D482923E174674AA0087DD19 /* bath.jpg */,
 			);
 			name = SamplePictures;
@@ -297,6 +310,9 @@
 				D48292051745C4720087DD19 /* Default@2x.png in Resources */,
 				D48292071745C4720087DD19 /* Default-568h@2x.png in Resources */,
 				D482923F174674AA0087DD19 /* bath.jpg in Resources */,
+				D445D4F617469D0000E74A14 /* baby2.jpg in Resources */,
+				D445D4F717469D0000E74A14 /* baby1.jpg in Resources */,
+				D445D4F817469D0000E74A14 /* baby0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +454,7 @@
 				D482920F1745C4720087DD19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

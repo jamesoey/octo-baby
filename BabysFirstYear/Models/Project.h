@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSSet *tasks;
 
-+ (Project*)projectWithName:(NSString*)name;
++ (Project*)project;
 
 @end
 

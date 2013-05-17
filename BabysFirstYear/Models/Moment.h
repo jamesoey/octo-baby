@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSNumber * width;
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSSet *tasks;
+
++ (Moment*)moment;
 @end
 
 @interface Moment (CoreDataGeneratedAccessors)

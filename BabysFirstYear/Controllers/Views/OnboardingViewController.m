@@ -10,6 +10,7 @@
 #import "OnboardingView.h"
 #import "Project.h"
 #import "MainViewController.h"
+#import "SflyData.h"
 
 @interface OnboardingViewController () {
     OnboardingView *onboardingView;
@@ -53,8 +54,10 @@
 
 - (void) submitProject {
     NSString *name = onboardingView.nameField.text;
-    Project *newProject = [Project projectWithName:name];
-    MainViewController *mvController = [[MainViewController alloc] initWithProject:newProject];
+    Project *project = [SflyData project];
+    project.name = name;
+    
+    MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
     [self presentViewController:mvController animated:YES completion:nil];
 }
 
