@@ -33,7 +33,9 @@
                                          if (error == nil) {
                                              moment.uid = [assetURL absoluteString];
                                              [SflyCore saveContext];
-                                             successBlock();
+                                             if (successBlock) {
+                                                 successBlock();
+                                             }
                                          } else {
                                              NSLog(@"ERROR: Could not write image to photo album");
                                          }

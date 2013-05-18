@@ -93,9 +93,13 @@
         } else {
             project.isBoy = @YES;
         }
-        MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
-        [self presentViewController:mvController animated:YES completion:nil];
+        [self performSelector:@selector(presentNextView:) withObject:project afterDelay:0.5];
     }
+}
+
+- (void)presentNextView:(Project*)project {
+    MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
+    [self presentViewController:mvController animated:YES completion:nil];
 }
 
 #pragma mark - buttons
