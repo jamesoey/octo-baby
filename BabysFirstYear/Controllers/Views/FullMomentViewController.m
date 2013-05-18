@@ -90,8 +90,6 @@
         UIImage *bookOverLayRight = [UIImage imageNamed:@"imgRightSpineShadow.png"];
         self.spine = [[UIImageView alloc] initWithImage:bookOverLayRight];
         self.spine.frame = CGRectMake(0,0,bookOverLayRight.size.width, bookOverLayRight.size.height-1);
-        self.photo = [[UIImageView alloc] init];
-        self.photo.backgroundColor = [UIColor redColor];
         self.photo.frame = CGRectMake(30,18,230,230);
     }
     [self.view addSubview:self.bg];
