@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PopoverView.h"
+#import "TopBarView.h"
 
 @class Project;
 
@@ -16,6 +17,9 @@
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIImageView *bookBgView;
+@property (nonatomic, strong) UIView *tapView;
+@property (nonatomic, strong) TopBarView *topBarView;
 
 - (id)initWithProject:(Project*)p;
 
