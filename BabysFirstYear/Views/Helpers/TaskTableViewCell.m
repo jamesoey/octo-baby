@@ -41,6 +41,7 @@
     self.titleLabel.text = self.task.caption;
     self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.font = [UIFont systemFontOfSize:12];
+    self.titleLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.titleLabel];
     
     self.status = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 100, 30)];
