@@ -42,7 +42,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor yellowColor];
+    self.view.backgroundColor = [UIColor clearColor];
     
     [self layoutPage];
     
@@ -92,6 +92,13 @@
         self.spine.frame = CGRectMake(0,0,bookOverLayRight.size.width, bookOverLayRight.size.height-1);
         self.photo.frame = CGRectMake(30,18,230,230);
     }
+    
+    self.bg.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.bg.alpha = 1;
+    }];
+    self.photo.alpha = 0;
+    
     [self.view addSubview:self.bg];
     [self.view addSubview:self.spine];
     [self.view addSubview:self.photo];
@@ -101,8 +108,21 @@
 - (void)refreshPhoto {
     [[AssetsLibraryController sharedController] imageForURL:task.moment.uid success:^(UIImage *image) {
         self.photo.image = image;
+        [self animateIn];
     } failureBlock:^(NSError *error) {
         NSLog(@"ERROR: Cannot add image to FMV image view");
+    }];
+}
+
+- (void)hideAll {
+    self.bg.alpha = 0;
+    self.photo.alpha = 0;
+    self.spine.alpha = 0;
+}
+
+- (void)animateIn {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.photo.alpha = 1;
     }];
 }
 

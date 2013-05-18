@@ -20,5 +20,6 @@
 
 - (id)initWithTask:(Task*)t andIndex:(int)index;
 - (void)refreshPhoto;
+- (void)hideAll;
 
 @end

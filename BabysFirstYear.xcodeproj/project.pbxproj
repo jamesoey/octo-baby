@@ -98,6 +98,9 @@
 		FC156CC217474AA7002FF09A /* 06.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC156CAD17474AA7002FF09A /* 06.jpg */; };
 		FC156CC317474AA7002FF09A /* 17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC156CAE17474AA7002FF09A /* 17.jpg */; };
 		FC156CC417474AA7002FF09A /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FC156CAF17474AA7002FF09A /* background.jpg */; };
+		FC156CC61747F140002FF09A /* side_menu_love_photos.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CC51747F140002FF09A /* side_menu_love_photos.png */; };
+		FC156CC9174822B6002FF09A /* multiselect_bar_share.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CC8174822B5002FF09A /* multiselect_bar_share.png */; };
+		FC156CCC174826DD002FF09A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC156CCB174826DC002FF09A /* ShareViewController.m */; };
 		FC25189F1746A27B00677D0D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189D1746A27B00677D0D /* Icon.png */; };
 		FC2518A01746A27B00677D0D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189E1746A27B00677D0D /* Icon@2x.png */; };
 		FC2518B11746BC2900677D0D /* btnBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2518A11746BC2300677D0D /* btnBegin.png */; };
@@ -233,6 +236,10 @@
 		FC156CAD17474AA7002FF09A /* 06.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 06.jpg; sourceTree = "<group>"; };
 		FC156CAE17474AA7002FF09A /* 17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 17.jpg; sourceTree = "<group>"; };
 		FC156CAF17474AA7002FF09A /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		FC156CC51747F140002FF09A /* side_menu_love_photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = side_menu_love_photos.png; sourceTree = "<group>"; };
+		FC156CC8174822B5002FF09A /* multiselect_bar_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiselect_bar_share.png; sourceTree = "<group>"; };
+		FC156CCA174826DC002FF09A /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = Controllers/Views/ShareViewController.h; sourceTree = "<group>"; };
+		FC156CCB174826DC002FF09A /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = Controllers/Views/ShareViewController.m; sourceTree = "<group>"; };
 		FC25189D1746A27B00677D0D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		FC25189E1746A27B00677D0D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		FC2518A11746BC2300677D0D /* btnBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBegin.png; sourceTree = "<group>"; };
@@ -463,6 +470,8 @@
 				D4829245174675B70087DD19 /* OnboardingViewController.h */,
 				D445D5051746A5CC00E74A14 /* FullMomentViewController.h */,
 				D445D5061746A5CC00E74A14 /* FullMomentViewController.m */,
+				FC156CCA174826DC002FF09A /* ShareViewController.h */,
+				FC156CCB174826DC002FF09A /* ShareViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -479,6 +488,8 @@
 		FC156C6D17472C1E002FF09A /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				FC156CC8174822B5002FF09A /* multiselect_bar_share.png */,
+				FC156CC51747F140002FF09A /* side_menu_love_photos.png */,
 				FC156C6E17472C30002FF09A /* imgBottomToolbar.png */,
 				FC156C6F17472C30002FF09A /* imgBottomToolbar@2x.png */,
 				FC156C7017472C30002FF09A /* iconCameraSmall.png */,
@@ -677,6 +688,8 @@
 				FC156CC217474AA7002FF09A /* 06.jpg in Resources */,
 				FC156CC317474AA7002FF09A /* 17.jpg in Resources */,
 				FC156CC417474AA7002FF09A /* background.jpg in Resources */,
+				FC156CC61747F140002FF09A /* side_menu_love_photos.png in Resources */,
+				FC156CC9174822B6002FF09A /* multiselect_bar_share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +721,7 @@
 				D445D50A1746A73B00E74A14 /* CaptureMomentViewController.m in Sources */,
 				D445D50D1746A84600E74A14 /* FullMomentView.m in Sources */,
 				D4C56004174727C800C8D76E /* TopBarView.m in Sources */,
+				FC156CCC174826DD002FF09A /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

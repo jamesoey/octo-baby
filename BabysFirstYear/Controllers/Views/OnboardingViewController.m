@@ -46,7 +46,7 @@
     
     
     // single tap gesture recognizer
-    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDatePicker)];
+    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     tapGestureRecognize.numberOfTapsRequired = 1;
     [onboardingView addGestureRecognizer:tapGestureRecognize];
 
@@ -126,9 +126,12 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if (textField == onboardingView.nameField) {
+        [onboardingView.birthdatePicker resignFirstResponder];
+        [self dismissDatePicker];
         return YES;
     } else if (textField == onboardingView.dateField) {
-        [onboardingView.birthdatePicker setHidden:NO];
+        [self invokeDatePicker];
+        [onboardingView.nameField resignFirstResponder];
         return NO;
     } else {
         return NO;
@@ -137,6 +140,22 @@
 
 #pragma mark - date picker
 
+- (void) dismiss {
+    [self dismissDatePicker];
+    [self dismissKeyboard];
+}
+
+- (void)invokeDatePicker {
+    onboardingView.birthdatePicker.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        onboardingView.birthdatePicker.frame = CGRectMake(0,self.view.frame.size.height-onboardingView.birthdatePicker.frame.size.height,
+                                                          onboardingView.birthdatePicker.frame.size.width,onboardingView.birthdatePicker.frame.size.height);
+    } completion:^(BOOL finished) {
+        
+        [self validateForm];
+    }];
+    
+}
 
 - (void)dismissDatePicker {
     if (onboardingView.birthdatePicker.hidden == NO) {
@@ -144,10 +163,19 @@
         [dateFormatter setDateFormat:@"MMMM d, y"];
         NSString *dateString = [dateFormatter stringFromDate:onboardingView.birthdatePicker.date];
         onboardingView.dateField.text = dateString;
-        onboardingView.birthdatePicker.hidden = YES;
-        [self validateForm];
+        
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            onboardingView.birthdatePicker.frame = CGRectMake(0,self.view.frame.size.height,onboardingView.birthdatePicker.frame.size.width,onboardingView.birthdatePicker.frame.size.height);
+        } completion:^(BOOL finished) {
+            onboardingView.birthdatePicker.hidden = YES;
+            [self validateForm];
+        }];
     }
 }
 
+- (void)dismissKeyboard {
+    [onboardingView.nameField resignFirstResponder];
+}
 
 @end

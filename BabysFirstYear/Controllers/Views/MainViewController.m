@@ -61,7 +61,12 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]];
+    
+    UIImage *love = [UIImage imageNamed:@"side_menu_love_photos.png"];
+    self.loveImage = [[UIImageView alloc] initWithImage:love];
+    self.loveImage.frame = CGRectMake((self.view.frame.size.width-love.size.width/2.0)/2.0,464,love.size.width/2.0, love.size.height/2.0);
+    [self.view addSubview:self.loveImage];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,250,200) style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -80,30 +85,25 @@
     //UIImage *cal3 = [UIImage imageNamed:@"imgCalendarWeek3.png"];
     
     UIImageView *calV1 = [[UIImageView alloc] initWithImage:cal1];
-    calV1.frame = CGRectMake(0,self.topBarView.frame.size.height,cal1.size.width, cal1.size.height);
+    calV1.frame = CGRectMake(0,0,cal1.size.width, cal1.size.height);
     UIImageView *calVBot = [[UIImageView alloc] initWithImage:calBot];
-    calVBot.frame = CGRectMake(0,cal1.size.height+self.topBarView.frame.size.height,calBot.size.width, calBot.size.height);
-    [self.view addSubview:calV1];
-    [self.view addSubview:calVBot];
+    calVBot.frame = CGRectMake(0,cal1.size.height,calBot.size.width, calBot.size.height);
     
-    /*
-    UIImageView *calV2 = [[UIImageView alloc] initWithImage:cal2];
-    calV2.frame = CGRectMake(cal1.size.width-27,0,cal2.size.width, cal2.size.height);
-    UIImageView *calV3 = [[UIImageView alloc] initWithImage:cal3];
-    calV3.frame = CGRectMake(cal1.size.width+cal2.size.width-54,0,cal3.size.width, cal3.size.height);
+    self.calBar = [[UIImageView alloc] initWithFrame:CGRectMake(0,self.topBarView.frame.size.height,calBot.size.width,calBot.size.height)];
+    [self.calBar addSubview:calV1];
+    [self.calBar addSubview:calVBot];
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,cal1.size.width,cal1.size.height)];
-    self.scrollView.delegate = self;
-    self.scrollView.showsVerticalScrollIndicator = NO;
-    self.scrollView.showsHorizontalScrollIndicator = YES;
-    self.scrollView.backgroundColor = [UIColor whiteColor];
-    self.scrollView.contentSize = CGSizeMake(cal1.size.width+cal2.size.width+cal3.size.width, cal1.size.height);
-    [self.scrollView addSubview:calV1];
-    [self.scrollView addSubview:calV2];
-    [self.scrollView addSubview:calV3];
     
-    [self.view addSubview:self.scrollView];
-    */
+    UIImage *square = [self squareWithColor:(UIColorFromRGB(0xFF3300))];
+    UIImageView *sv = [[UIImageView alloc] initWithImage:square];
+    sv.frame = CGRectMake(140,23,40,40);
+    sv.alpha = 0.5f;
+    [self.calBar addSubview:sv];
+    
+    [self.view addSubview:self.calBar];
+    
+    
+    
     
     //Step 1
     //Instantiate the UIPageViewController.
@@ -149,21 +149,28 @@
     //Add the view of the pageViewController to the current view
     [self.view addSubview:self.pageViewController.view];
     
+    //Step 6:
+    //Assign the gestureRecognizers property of our pageViewController to our view's gestureRecognizers property.
+    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    
     self.tapView = [[UIView alloc] initWithFrame:self.pageViewController.view.frame];
     [self.view addSubview:self.tapView];
     
     UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
     [self.tapView addGestureRecognizer:tapGest];
     
-    UIButton *temp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    temp.frame = CGRectMake(0,450, 50,50);
-    [temp addTarget:self action:@selector(tempButton) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *bbar = [UIImage imageNamed:@"imgBottomToolbar.png"];
+    self.bottomBar = [[UIImageView alloc] initWithImage:bbar];
+    self.bottomBar.frame = CGRectMake(0,self.view.frame.size.height-bbar.size.height,bbar.size.width,bbar.size.height);
+    [self.view addSubview:self.bottomBar];
     
-    [self.view addSubview:temp];
+    self.ideaButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    //Step 6:
-    //Assign the gestureRecognizers property of our pageViewController to our view's gestureRecognizers property.
-    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    UIImage *ideas = [UIImage imageNamed:@"iconIdeas.png"];
+    [self.ideaButton setImage:ideas forState:UIControlStateNormal];
+    [self.ideaButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
+    self.ideaButton.frame = CGRectMake(15,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
+    [self.view addSubview:self.ideaButton];
     
 	// Do any additional setup after loading the view.
 }
@@ -174,7 +181,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tempButton {
+- (void)taskPopup {
     
     /*
     PopoverView *pv = [PopoverView showPopoverAtPoint:CGPointMake(10,400)
@@ -184,10 +191,22 @@
                                              delegate:self];
     */
     
-    pv = [PopoverView showPopoverAtPoint:CGPointMake(10,400) inView:self.view withContentView:self.tableView delegate:self];
+    pv = [PopoverView showPopoverAtPoint:CGPointMake(20,500) inView:self.view withContentView:self.tableView delegate:self];
     
     
 }
+
+- (UIImage *)squareWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0, 0, 50, 50);
+    // Create a 1 pixel line
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    [color setFill];
+    UIRectFill(rect); // Fill it with your color
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 
 - (void)tapped {
     NSLog(@"Tapped!!!");
@@ -361,36 +380,63 @@
     return 40.0;
 }
 
-
-#pragma mark - Rotation Delegates
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
-            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
-            interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+- (void) hideUI:(BOOL)hide {
+    
+    BOOL hideui = hide;
+    if (!hide)
+        hideui = hide || UIDeviceOrientationIsLandscape(self.interfaceOrientation);
+    
+    float alpha = hideui ? 0:1;
+    
+    self.topBarView.alpha = alpha;
+    self.calBar.alpha = alpha;
+    self.bottomBar.alpha = alpha;
+    self.cameraButton.alpha = alpha;
+    self.ideaButton.alpha = alpha;
+    self.progressButton.alpha = alpha;
+    self.loveImage.alpha = alpha;
+    
+    self.bookBgView.alpha = 1-(float)hide;
 }
 
+
+#pragma mark - Rotation Delegates
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [UIView setAnimationsEnabled:NO];
+    FullMomentViewController *currentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    [currentViewController hideAll];
+    
     [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
     
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        self.pageViewController.view.frame = CGRectMake(9,163,270*2,268);
-        self.topBarView.alpha = 0;
+        self.pageViewController.view.frame = CGRectMake(14,17,270*2,268);
     } else {
         self.pageViewController.view.frame = CGRectMake(9,163,270,268);
-        self.topBarView.alpha = 1;
     }
     
-    
-    
+    [self hideUI:YES];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [UIView setAnimationsEnabled:YES];
     if (fromInterfaceOrientation != UIInterfaceOrientationLandscapeLeft && fromInterfaceOrientation != UIInterfaceOrientationLandscapeRight) {
-        self.pageViewController.view.frame = CGRectMake((self.view.frame.size.width-self.pageViewController.view.frame.size.width)/2.0,
-                                                        17,self.pageViewController.view.frame.size.width, self.pageViewController.view.frame.size.height);
         self.bookBgView.frame = CGRectMake(-16, 5, self.bookBgView.frame.size.width, self.bookBgView.frame.size.height);
+        [UIView animateWithDuration:0.7 animations:^{
+            [self hideUI:NO];
+            //self.pageViewController.view.frame = CGRectMake((self.view.frame.size.width-self.pageViewController.view.frame.size.width)/2.0,
+            //                                                17,self.pageViewController.view.frame.size.width, self.pageViewController.view.frame.size.height);
+            
+        } completion:^(BOOL finished) {
+        }];
     } else {
-        self.bookBgView.frame = CGRectMake(-290,151,self.bookBgView.frame.size.width, self.bookBgView.frame.size.height);
+        if ((fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown || UIDeviceOrientationIsLandscape(fromInterfaceOrientation))
+            && UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+            self.bookBgView.frame = CGRectMake(-290,151,self.bookBgView.frame.size.width, self.bookBgView.frame.size.height);
+        [UIView animateWithDuration:0.7 animations:^{
+            [self hideUI:NO];
+        } completion:^(BOOL finished) {
+        }];
     }
 
     
@@ -398,7 +444,7 @@
 }
 
 #pragma mark - ScrollView Delegates
-
+/*
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (scrollView.contentOffset.x > scrollView.contentSize.width-scrollView.frame.size.width) {
@@ -429,5 +475,5 @@
 {
     [self snapScroll];
 }
-
+*/
 @end

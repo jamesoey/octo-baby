@@ -9,6 +9,7 @@
 #import "OnboardingView.h"
 #import "Project.h"
 #import "SflyUtility.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation OnboardingView
 
@@ -45,12 +46,18 @@
     [self.nameField setBackgroundColor:[UIColor whiteColor]];
     self.nameField.placeholder = @"Baby's First Name";
     self.nameField.textColor = UIColorFromRGB(0x999999);
+    self.nameField.layer.cornerRadius = 6.0f;
+    self.nameField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview: self.nameField];
 
     self.dateField = [[UITextField alloc] initWithFrame:CGRectMake(20, 270, 280, 30)];
     [self.dateField setBackgroundColor:[UIColor whiteColor]];
     self.dateField.placeholder = @"Baby's Birthdate";
     self.dateField.textColor = UIColorFromRGB(0x999999);
+    self.dateField.layer.cornerRadius = 6.0f;
+    self.dateField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.dateField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview: self.dateField];
 
     
@@ -91,7 +98,7 @@
     self.submitButton.alpha = 0.4;
     [self addSubview:self.submitButton];
     
-    self.birthdatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-250, 320, 250)];
+    self.birthdatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.bounds.size.height, 320, 250)];
     self.birthdatePicker.datePickerMode = UIDatePickerModeDate;
     self.birthdatePicker.hidden = YES;
     [self addSubview:self.birthdatePicker];
