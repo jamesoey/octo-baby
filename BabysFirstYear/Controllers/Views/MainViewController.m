@@ -68,15 +68,37 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
     
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,300,70)];
+    
+    UIImage *cal1 = [UIImage imageNamed:@"imgCalendarWeek1.png"];
+    UIImage *calBot = [UIImage imageNamed:@"imgBottomOfCalendar.png"];
+    //UIImage *cal2 = [UIImage imageNamed:@"imgCalendarWeek2.png"];
+    //UIImage *cal3 = [UIImage imageNamed:@"imgCalendarWeek3.png"];
+    
+    UIImageView *calV1 = [[UIImageView alloc] initWithImage:cal1];
+    calV1.frame = CGRectMake(0,0,cal1.size.width, cal1.size.height);
+    UIImageView *calVBot = [[UIImageView alloc] initWithImage:calBot];
+    calVBot.frame = CGRectMake(0,cal1.size.height,calBot.size.width, calBot.size.height);
+    [self.view addSubview:calV1];
+    [self.view addSubview:calVBot];
+    
+    /*
+    UIImageView *calV2 = [[UIImageView alloc] initWithImage:cal2];
+    calV2.frame = CGRectMake(cal1.size.width-27,0,cal2.size.width, cal2.size.height);
+    UIImageView *calV3 = [[UIImageView alloc] initWithImage:cal3];
+    calV3.frame = CGRectMake(cal1.size.width+cal2.size.width-54,0,cal3.size.width, cal3.size.height);
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,cal1.size.width,cal1.size.height)];
     self.scrollView.delegate = self;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = YES;
     self.scrollView.backgroundColor = [UIColor whiteColor];
-    self.scrollView.contentSize = CGSizeMake(1000, 100);
+    self.scrollView.contentSize = CGSizeMake(cal1.size.width+cal2.size.width+cal3.size.width, cal1.size.height);
+    [self.scrollView addSubview:calV1];
+    [self.scrollView addSubview:calV2];
+    [self.scrollView addSubview:calV3];
     
     [self.view addSubview:self.scrollView];
-    
+    */
     
     //Step 1
     //Instantiate the UIPageViewController.
@@ -113,9 +135,13 @@
     
     //Step 5:
     // set the pageViewController's frame as an inset rect.
-    CGRect pageViewRect = self.view.bounds;
-    pageViewRect = CGRectInset(pageViewRect, 20.0, 40.0);
-    self.pageViewController.view.frame = pageViewRect;
+    //CGRect pageViewRect = self.view.bounds;
+    //pageViewRect = CGRectInset(pageViewRect, 20.0, 40.0);
+    
+    UIImage *bookBg = [UIImage imageNamed:@"imgOpenBook.png"];
+    UIImageView *bookBgView = [[UIImageView alloc] initWithImage:bookBg];
+    bookBgView.frame = CGRectMake(0,0,bookBg.size.width, bookBg.size.height);
+    self.pageViewController.view.frame = CGRectMake(20,100,bookBg.size.width/2.0, bookBg.size.height);
     
     UIButton *temp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     temp.frame = CGRectMake(0,400, 50,50);
@@ -338,14 +364,34 @@
 #pragma mark - ScrollView Delegates
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
     if (scrollView.contentOffset.x > scrollView.contentSize.width-scrollView.frame.size.width) {
         scrollView.contentOffset = CGPointMake(0,0);
     }
     if (scrollView.contentOffset.x < 0) {
         scrollView.contentOffset = CGPointMake(scrollView.contentSize.width-scrollView.frame.size.width,0);
     }
-    
 }
 
+
+- (void) snapScroll;
+{
+    int temp = (self.scrollView.contentOffset.x+25) / 50;
+    self.scrollView.contentOffset = CGPointMake(temp*50 , 0);
+}
+
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+{
+    NSLog(@"ended dragging!!");
+    
+    //if (!decelerate) {
+        [self snapScroll];
+    //}
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self snapScroll];
+}
 
 @end
