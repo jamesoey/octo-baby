@@ -15,6 +15,7 @@
 		D445D5071746A5CC00E74A14 /* FullMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D5061746A5CC00E74A14 /* FullMomentViewController.m */; };
 		D445D50A1746A73B00E74A14 /* CaptureMomentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */; };
 		D445D50D1746A84600E74A14 /* FullMomentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D445D50C1746A84600E74A14 /* FullMomentView.m */; };
+		D445D50F1746C87B00E74A14 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D445D50E1746C87B00E74A14 /* MobileCoreServices.framework */; };
 		D48291EF1745C4720087DD19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291EE1745C4720087DD19 /* UIKit.framework */; };
 		D48291F11745C4720087DD19 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F01745C4720087DD19 /* Foundation.framework */; };
 		D48291F31745C4720087DD19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D48291F21745C4720087DD19 /* CoreGraphics.framework */; };
@@ -74,6 +75,7 @@
 		D445D5091746A73B00E74A14 /* CaptureMomentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaptureMomentViewController.m; path = Controllers/Views/CaptureMomentViewController.m; sourceTree = "<group>"; };
 		D445D50B1746A84600E74A14 /* FullMomentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullMomentView.h; path = Views/FullMomentView.h; sourceTree = "<group>"; };
 		D445D50C1746A84600E74A14 /* FullMomentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullMomentView.m; path = Views/FullMomentView.m; sourceTree = "<group>"; };
+		D445D50E1746C87B00E74A14 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D48291EB1745C4720087DD19 /* BabysFirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabysFirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48291EE1745C4720087DD19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D48291F01745C4720087DD19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC2519041746E58300677D0D /* QuartzCore.framework in Frameworks */,
+				D445D50F1746C87B00E74A14 /* MobileCoreServices.framework in Frameworks */,
 				D445D4F21746923200E74A14 /* AssetsLibrary.framework in Frameworks */,
 				D48291EF1745C4720087DD19 /* UIKit.framework in Frameworks */,
 				D48291F11745C4720087DD19 /* Foundation.framework in Frameworks */,
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				FC2519031746E58300677D0D /* QuartzCore.framework */,
+				D445D50E1746C87B00E74A14 /* MobileCoreServices.framework */,
 				D445D4F11746923200E74A14 /* AssetsLibrary.framework */,
 				D48291EE1745C4720087DD19 /* UIKit.framework */,
 				D48291F01745C4720087DD19 /* Foundation.framework */,

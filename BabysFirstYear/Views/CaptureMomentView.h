@@ -13,6 +13,8 @@
 @interface CaptureMomentView : UIView
 
 @property (nonatomic, retain) Task *task;
+@property (nonatomic, retain) UIButton *cameraButton;
+@property (nonatomic, retain) UIButton *cameraRollButton;
 
 - (id)initWithFrame:(CGRect)frame task:(Task*)t;
 

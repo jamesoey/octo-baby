@@ -19,6 +19,7 @@
 @dynamic startTime;
 @dynamic uid;
 @dynamic tasks;
+@dynamic isBoy;
 
 + (Project*)project {
     Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project" inManagedObjectContext:[SflyCore context]];
