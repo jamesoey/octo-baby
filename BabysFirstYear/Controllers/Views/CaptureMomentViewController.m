@@ -43,7 +43,6 @@
 - (void) loadView {
     CGRect bounds = [[UIScreen mainScreen] bounds];
     captureMomentView = [[CaptureMomentView alloc] initWithFrame:bounds task:task];
-    
     [captureMomentView.cameraButton addTarget:self action:@selector(touchedCameraButton) forControlEvents:UIControlEventTouchUpInside];
     [captureMomentView.cameraButton addTarget:self action:@selector(touchedCameraRollButton) forControlEvents:UIControlEventTouchUpInside];
     

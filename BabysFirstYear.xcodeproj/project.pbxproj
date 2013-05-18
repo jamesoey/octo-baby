@@ -54,6 +54,7 @@
 		D4C55FFE1747123C00C8D76E /* imgPhotoFrameLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C55FF01747123C00C8D76E /* imgPhotoFrameLarge.png */; };
 		D4C55FFF1747123C00C8D76E /* imgPhotoFrameLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C55FF11747123C00C8D76E /* imgPhotoFrameLarge@2x.png */; };
 		D4C560011747127F00C8D76E /* iconCameraRoll.png in Resources */ = {isa = PBXBuildFile; fileRef = D4C560001747127F00C8D76E /* iconCameraRoll.png */; };
+		D4C56004174727C800C8D76E /* TopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C56003174727C800C8D76E /* TopBarView.m */; };
 		FC25189F1746A27B00677D0D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189D1746A27B00677D0D /* Icon.png */; };
 		FC2518A01746A27B00677D0D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189E1746A27B00677D0D /* Icon@2x.png */; };
 		FC2518B11746BC2900677D0D /* btnBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2518A11746BC2300677D0D /* btnBegin.png */; };
@@ -144,6 +145,8 @@
 		D4C55FF01747123C00C8D76E /* imgPhotoFrameLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = imgPhotoFrameLarge.png; path = Resources/imgPhotoFrameLarge.png; sourceTree = "<group>"; };
 		D4C55FF11747123C00C8D76E /* imgPhotoFrameLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "imgPhotoFrameLarge@2x.png"; path = "Resources/imgPhotoFrameLarge@2x.png"; sourceTree = "<group>"; };
 		D4C560001747127F00C8D76E /* iconCameraRoll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconCameraRoll.png; path = Resources/iconCameraRoll.png; sourceTree = "<group>"; };
+		D4C56002174727C800C8D76E /* TopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopBarView.h; path = Views/TopBarView.h; sourceTree = "<group>"; };
+		D4C56003174727C800C8D76E /* TopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopBarView.m; path = Views/TopBarView.m; sourceTree = "<group>"; };
 		FC25189D1746A27B00677D0D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		FC25189E1746A27B00677D0D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		FC2518A11746BC2300677D0D /* btnBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBegin.png; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				D445D50017469FA400E74A14 /* CaptureMomentView.m */,
 				D445D50B1746A84600E74A14 /* FullMomentView.h */,
 				D445D50C1746A84600E74A14 /* FullMomentView.m */,
+				D4C56002174727C800C8D76E /* TopBarView.h */,
+				D4C56003174727C800C8D76E /* TopBarView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				D445D5071746A5CC00E74A14 /* FullMomentViewController.m in Sources */,
 				D445D50A1746A73B00E74A14 /* CaptureMomentViewController.m in Sources */,
 				D445D50D1746A84600E74A14 /* FullMomentView.m in Sources */,
+				D4C56004174727C800C8D76E /* TopBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
