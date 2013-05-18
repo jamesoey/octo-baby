@@ -11,6 +11,7 @@
 #import "TopBarView.h"
 #import "SflyData.h"
 #import "Project.h"
+#import "SflyUtility.h"
 
 @implementation CaptureMomentView
 
@@ -27,16 +28,19 @@
 - (void)initView {
     self.backgroundColor = UIColorFromRGB(0xEFE9E5);
 
+    [SflyUtility addLineAtY:44+30+282+30 toView:self];
+    [SflyUtility addLineAtY:44+30+282+30+10+44+10 toView:self];
+
     
     UIView *topBarView = [[TopBarView alloc] init];
     [self addSubview:topBarView];
    
     
     UIImage *largeFrameImage = [UIImage imageNamed:@"imgPhotoFrameLarge.png"];
-    UIButton *largeFrameButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [largeFrameButton setImage:largeFrameImage forState:UIControlStateNormal];
-    largeFrameButton.frame = CGRectMake((320-largeFrameImage.size.width)/2.0, 74, largeFrameImage.size.width, largeFrameImage.size.height);
-    [self addSubview:largeFrameButton];
+    self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.cameraButton setImage:largeFrameImage forState:UIControlStateNormal];
+    self.cameraButton.frame = CGRectMake((320-largeFrameImage.size.width)/2.0, 74, largeFrameImage.size.width, largeFrameImage.size.height);
+    [self addSubview:self.cameraButton];
 
     UIImage *cameraIconImage = [UIImage imageNamed:@"iconCameraLarge.png"];
     UIImageView *cameraIcon = [[UIImageView alloc] initWithImage:cameraIconImage];
@@ -44,7 +48,7 @@
     [self addSubview:cameraIcon];
     
     NSString *cameraLabelText = [NSString stringWithFormat:@"Let's get started. Take a photo of %@ right now.", [[SflyData project] name]];
-    UILabel *cameraLabel = [[UILabel alloc] initWithFrame:CGRectMake((320-200)/2.0, 240, 200, 60)];
+    UILabel *cameraLabel = [[UILabel alloc] initWithFrame:CGRectMake((320-200)/2.0, 240, 200, 80)];
     cameraLabel.backgroundColor = [UIColor clearColor];
     cameraLabel.numberOfLines = 0;
     cameraLabel.lineBreakMode = NSLineBreakByWordWrapping;
@@ -58,14 +62,25 @@
     self.cameraButton.frame = CGRectMake(60, 150, 150, 40);
     [self addSubview:self.cameraButton];*/
     
-    //UILabel *cameraIconImage = [UIImage imageNamed:@"iconCameraRoll.png"];
+    UIImage *cameraRollIconImage = [UIImage imageNamed:@"iconCameraRoll.png"];
+    UIImageView *cameraRollIcon = [[UIImageView alloc] initWithImage:cameraRollIconImage];
+    [cameraRollIcon setFrame:CGRectMake(15, 44+30+282+30+10, cameraRollIconImage.size.width, cameraRollIconImage.size.height)];
+    [self addSubview:cameraRollIcon];
     
-    UILabel *cameraRollLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 400, 200, 40)];
+    UIImage *forwardArrowImage = [UIImage imageNamed:@"imgForwardArrow.png"];
+    UIImageView *forwardArrow = [[UIImageView alloc] initWithImage:forwardArrowImage];
+    [forwardArrow setFrame:CGRectMake(285, 410, forwardArrowImage.size.width, forwardArrowImage.size.height)];
+    [self addSubview:forwardArrow];
+
+    UILabel *cameraRollLabel = [[UILabel alloc] initWithFrame:CGRectMake(15+44+10, 397, 200, 40)];
     cameraRollLabel.backgroundColor = [UIColor clearColor];
     cameraRollLabel.text = @"Select from camera roll";
     cameraRollLabel.textColor = UIColorFromRGB(0x666666);
     [self addSubview:cameraRollLabel];
 
+    self.cameraRollView = [[UIView alloc] initWithFrame:CGRectMake(0, 44+30+282+30+10, 320, cameraRollIconImage.size.height)];
+    [self addSubview:self.cameraRollView];
+    
     /*self.cameraRollButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.cameraRollButton setTitle:@"Select" forState:UIControlStateNormal];
     self.cameraRollButton.frame = CGRectMake(60, 400, 150, 40);

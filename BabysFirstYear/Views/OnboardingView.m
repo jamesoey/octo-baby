@@ -8,6 +8,7 @@
 
 #import "OnboardingView.h"
 #import "Project.h"
+#import "SflyUtility.h"
 
 @implementation OnboardingView
 
@@ -21,44 +22,13 @@
     return self;
 }
 
-- (UIImage*)doubleLine {
-    //top line
-    //E0DBD7
-    //FFFFFF
-    CGRect rect = CGRectMake(0, 0, 280, 2);
-
-    UIColor *color0 = UIColorFromRGB(0xE0DBD7);
-    CGRect rect0 = CGRectMake(0, 0, 280, 1);
-
-    UIColor *color1 = UIColorFromRGB(0xFFFFFF);
-    CGRect rect1 = CGRectMake(0, 1, 280, 1);
-
-    // Create a 1 pixel line
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    [color0 setFill];
-    UIRectFill(rect0); // Fill it with your color
-    [color1 setFill];
-    UIRectFill(rect1); // Fill it with your color
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-
-    return image;
-    
-}
-
-- (void)addLineAtY:(CGFloat)y {
-    UIImage *dLine = [self doubleLine];
-    UIImageView *iView = [[UIImageView alloc] initWithImage:dLine];
-    iView.frame = CGRectMake(20, y, dLine.size.width, dLine.size.height);
-    [self addSubview:iView];
-}
 
 - (void)initView {
     [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]]];
     
-    [self addLineAtY:55];
-    [self addLineAtY:185];
-    [self addLineAtY:400];
+    [SflyUtility addLineAtY:55 toView:self];
+    [SflyUtility addLineAtY:185 toView:self];
+    [SflyUtility addLineAtY:400 toView:self];
     
     
     UIImage *shutterflyTitleImage = [UIImage imageNamed:@"imgSflyLogo.png"];

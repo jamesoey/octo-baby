@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Task;
 
 @interface Moment : NSManagedObject
 
@@ -18,7 +19,7 @@
 @property (nonatomic, retain) NSSet *tasks;
 
 + (Moment*)moment;
-- (UIImage*)image;
+//- (UIImage*)image;
 @end
 
 @interface Moment (CoreDataGeneratedAccessors)

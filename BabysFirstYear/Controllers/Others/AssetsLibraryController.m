@@ -9,6 +9,7 @@
 #import "AssetsLibraryController.h"
 #import "Moment.h"
 #import "SflyCore.h"
+#import "SflyData.h"
 
 @implementation AssetsLibraryController
 
@@ -23,15 +24,16 @@
     return _sharedController;
 }
 
-- (void)saveImage:(UIImage*)image toMoment:(Moment*)moment {
+- (void)saveImage:(UIImage*)image toMoment:(Moment*)moment completion:(void (^)())successBlock {
     CGImageRef imageRef = image.CGImage;
-
+    
     [self.assetsLibrary writeImageToSavedPhotosAlbum:imageRef
-                                         orientation:ALAssetOrientationUp
+                                         orientation:(ALAssetOrientation)[image imageOrientation]
                                      completionBlock:^(NSURL *assetURL, NSError *error) {
                                          if (error == nil) {
                                              moment.uid = [assetURL absoluteString];
                                              [SflyCore saveContext];
+                                             successBlock();
                                          } else {
                                              NSLog(@"ERROR: Could not write image to photo album");
                                          }
@@ -43,8 +45,12 @@
     {
         ALAssetRepresentation *rep = [myasset defaultRepresentation];
         CGImageRef iref = [rep fullResolutionImage];
+        CGFloat scale  = 1;
+
+        ALAssetOrientation orientation = [[myasset valueForProperty:@"ALAssetPropertyOrientation"] intValue];
+        // Retrieve the image orientation from the EXIF data
         if (iref) {
-            UIImage *image = [UIImage imageWithCGImage:iref];
+            UIImage *image = [UIImage imageWithCGImage:iref scale:scale orientation:orientation];
             successBlock(image);
         }
     };

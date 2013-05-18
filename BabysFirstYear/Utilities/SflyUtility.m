@@ -281,4 +281,37 @@ kSecAttrGeneric				-		CFDataRef
     return [[Reachability reachabilityWithHostname:[SflyConfig shareServerBaseURL]] isReachable];
 }*/
 
++ (UIImage*)doubleLine {
+    //top line
+    //E0DBD7
+    //FFFFFF
+    CGRect rect = CGRectMake(0, 0, 280, 2);
+    
+    UIColor *color0 = UIColorFromRGB(0xE0DBD7);
+    CGRect rect0 = CGRectMake(0, 0, 280, 1);
+    
+    UIColor *color1 = UIColorFromRGB(0xFFFFFF);
+    CGRect rect1 = CGRectMake(0, 1, 280, 1);
+    
+    // Create a 1 pixel line
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    [color0 setFill];
+    UIRectFill(rect0); // Fill it with your color
+    [color1 setFill];
+    UIRectFill(rect1); // Fill it with your color
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+    
+}
+
++ (void)addLineAtY:(CGFloat)y toView:(UIView*)view {
+    UIImage *dLine = [SflyUtility doubleLine];
+    UIImageView *iView = [[UIImageView alloc] initWithImage:dLine];
+    iView.frame = CGRectMake(20, y, dLine.size.width, dLine.size.height);
+    [view addSubview:iView];
+}
+
+
 @end
