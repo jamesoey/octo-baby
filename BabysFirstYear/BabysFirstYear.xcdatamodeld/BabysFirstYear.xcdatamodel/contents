@@ -21,8 +21,8 @@
         <relationship name="projects" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Moment" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Project" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Task" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Moment" positionX="-45" positionY="-162" width="128" height="105"/>
+        <element name="Project" positionX="207" positionY="141" width="128" height="120"/>
+        <element name="Task" positionX="-216" positionY="53" width="128" height="118"/>
     </elements>
 </model>

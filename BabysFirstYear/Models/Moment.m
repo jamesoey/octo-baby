@@ -10,6 +10,7 @@
 #import "SflyUtility.h"
 #import "SflyCore.h"
 #import "AssetsLibraryController.h"
+#import "Task.h"
 
 @implementation Moment
 
@@ -19,18 +20,14 @@
 @dynamic tasks;
 
 + (Moment*)moment {
-
     Moment *moment = [NSEntityDescription insertNewObjectForEntityForName:@"Moment" inManagedObjectContext:[SflyCore context]];
     moment.uid = [SflyUtility genUUID];
     return moment;
 }
 
-
-- (UIImage*)image {
+/*- (UIImage*)image {
     NSURL *url = [[NSURL alloc] initWithString:@"asdfasdf"];
     
-
-    
-}
+}*/
 
 @end

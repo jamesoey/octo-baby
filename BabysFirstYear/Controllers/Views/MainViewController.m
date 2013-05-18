@@ -314,8 +314,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //[pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
 
     CaptureMomentViewController *cmViewController =
        [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:indexPath.row]];

@@ -64,4 +64,8 @@ typedef enum {
 + (BOOL)internetConnectionAvailable;
 + (BOOL)shareServerAvailable;
 
+
++ (UIImage*)doubleLine;
++ (void)addLineAtY:(CGFloat)y toView:(UIView*)view;
+
 @end

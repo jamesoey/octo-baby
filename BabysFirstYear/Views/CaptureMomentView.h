@@ -15,7 +15,7 @@
 @property (nonatomic, retain) Task *task;
 @property (nonatomic, retain) UIButton *cameraButton;
 @property (nonatomic, retain) UIButton *cameraRollButton;
-
+@property (nonatomic, retain) UIView *cameraRollView;
 - (id)initWithFrame:(CGRect)frame task:(Task*)t;
 
 @end

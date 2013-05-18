@@ -14,5 +14,6 @@
 
 +(SflyData*)sharedClient;
 +(Project*)project;
++(NSArray*)moments;
 
 @end

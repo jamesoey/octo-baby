@@ -61,4 +61,8 @@
     }
 }
 
++ (NSArray*)moments {
+    return [SflyData genericRequestWithEntity:@"Moment" predicate:nil];
+}
+
 @end
