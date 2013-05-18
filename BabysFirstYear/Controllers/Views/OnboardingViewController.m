@@ -67,14 +67,24 @@
 }
 
 
-- (void) submitProject {
+- (BOOL)validateForm {
     if ([onboardingView.nameField.text isEqualToString:@""] ||
         (onboardingView.girlButton.selected == NO &&
-         onboardingView.boyButton.selected == NO)) {
+         onboardingView.boyButton.selected == NO) ||
+        [onboardingView.dateField.text isEqualToString:@""]) {
+            onboardingView.submitButton.alpha = 0.4;
+            return NO;
+        } else {
+            onboardingView.submitButton.alpha = 1.0;
+            return YES;
+        }
+}
+
+- (void) submitProject {
+    if (![self validateForm]) {
     } else {
         [Project project];
 
-        NSString *name = onboardingView.nameField.text;
         Project *project = [SflyData project];
         project.name = onboardingView.nameField.text;
         project.startTime = onboardingView.birthdatePicker.date;
@@ -93,16 +103,19 @@
 - (void)touchedBoyButton {
     onboardingView.boyButton.selected = YES;
     onboardingView.girlButton.selected = NO;
+    [self validateForm];
 }
 
 - (void)touchedGirlButton {
     onboardingView.girlButton.selected = YES;
     onboardingView.boyButton.selected = NO;
+    [self validateForm];
 }
 
 #pragma mark - text fields
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self validateForm];
     [textField resignFirstResponder];
     return YES;
 }
@@ -128,6 +141,7 @@
         NSString *dateString = [dateFormatter stringFromDate:onboardingView.birthdatePicker.date];
         onboardingView.dateField.text = dateString;
         onboardingView.birthdatePicker.hidden = YES;
+        [self validateForm];
     }
 }
 
