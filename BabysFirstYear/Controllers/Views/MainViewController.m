@@ -17,6 +17,7 @@
 #import "Moment.h"
 #import "FullMomentViewController.h"
 #import "PopoverView.h"
+#import "TopBarView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController () {
@@ -60,6 +61,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,250,200) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -68,6 +71,8 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
     
+    self.topBarView = [[TopBarView alloc] init];
+    [self.view addSubview:self.topBarView];
     
     UIImage *cal1 = [UIImage imageNamed:@"imgCalendarWeek1.png"];
     UIImage *calBot = [UIImage imageNamed:@"imgBottomOfCalendar.png"];
@@ -75,9 +80,9 @@
     //UIImage *cal3 = [UIImage imageNamed:@"imgCalendarWeek3.png"];
     
     UIImageView *calV1 = [[UIImageView alloc] initWithImage:cal1];
-    calV1.frame = CGRectMake(0,0,cal1.size.width, cal1.size.height);
+    calV1.frame = CGRectMake(0,self.topBarView.frame.size.height,cal1.size.width, cal1.size.height);
     UIImageView *calVBot = [[UIImageView alloc] initWithImage:calBot];
-    calVBot.frame = CGRectMake(0,cal1.size.height,calBot.size.width, calBot.size.height);
+    calVBot.frame = CGRectMake(0,cal1.size.height+self.topBarView.frame.size.height,calBot.size.width, calBot.size.height);
     [self.view addSubview:calV1];
     [self.view addSubview:calVBot];
     
@@ -109,10 +114,11 @@
     //Assign the delegate and datasource as self.
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
+    self.pageViewController.view.autoresizingMask = UIViewAutoresizingNone;
     
     //Step 3:
     //Set the initial view controllers.
-    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:0]];
+    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:0] andIndex:0];
     NSArray *viewControllers = [NSArray arrayWithObject:contentViewController];
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionForward
@@ -124,12 +130,6 @@
     //Add the pageViewController as the childViewController
     [self addChildViewController:self.pageViewController];
     
-    //Add the view of the pageViewController to the current view
-    [self.view addSubview:self.pageViewController.view];
-    
-    
-    [self.view addSubview:self.scrollView];
-    
     //Call didMoveToParentViewController: of the childViewController, the UIPageViewController instance in our case.
     [self.pageViewController didMoveToParentViewController:self];
     
@@ -139,19 +139,31 @@
     //pageViewRect = CGRectInset(pageViewRect, 20.0, 40.0);
     
     UIImage *bookBg = [UIImage imageNamed:@"imgOpenBook.png"];
-    UIImageView *bookBgView = [[UIImageView alloc] initWithImage:bookBg];
-    bookBgView.frame = CGRectMake(0,0,bookBg.size.width, bookBg.size.height);
-    self.pageViewController.view.frame = CGRectMake(20,100,bookBg.size.width/2.0, bookBg.size.height);
+    self.bookBgView = [[UIImageView alloc] initWithImage:bookBg];
+    self.bookBgView.frame = CGRectMake(-290,151,bookBg.size.width, bookBg.size.height);
+    [self.view addSubview:self.bookBgView];
+    
+    NSLog(@"book bg %f %f", bookBg.size.width, bookBg.size.height);
+    
+    self.pageViewController.view.frame = CGRectMake(9,163,270,268);
+    //Add the view of the pageViewController to the current view
+    [self.view addSubview:self.pageViewController.view];
+    
+    self.tapView = [[UIView alloc] initWithFrame:self.pageViewController.view.frame];
+    [self.view addSubview:self.tapView];
+    
+    UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+    [self.tapView addGestureRecognizer:tapGest];
     
     UIButton *temp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    temp.frame = CGRectMake(0,400, 50,50);
+    temp.frame = CGRectMake(0,450, 50,50);
     [temp addTarget:self action:@selector(tempButton) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:temp];
     
     //Step 6:
     //Assign the gestureRecognizers property of our pageViewController to our view's gestureRecognizers property.
-    //self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
 	// Do any additional setup after loading the view.
 }
@@ -177,6 +189,11 @@
     
 }
 
+- (void)tapped {
+    NSLog(@"Tapped!!!");
+}
+
+
 
 #pragma mark - UIPageViewControllerDataSource Methods
 
@@ -188,7 +205,7 @@
     
     if(currentTaskIndex == 0) return nil;
     
-    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:currentTaskIndex-1]];
+    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:currentTaskIndex-1] andIndex:currentTaskIndex-1];
     return contentViewController;
 }
 
@@ -199,7 +216,7 @@
     int currentTaskIndex = [tasks indexOfObject:currentViewController.task];
     
     if(currentTaskIndex == [tasks count]-1) return nil;
-    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:currentTaskIndex+1]];
+    FullMomentViewController *contentViewController = [[FullMomentViewController alloc] initWithTask:[tasks objectAtIndex:currentTaskIndex+1] andIndex:currentTaskIndex+1];
     return contentViewController;
 }
 
@@ -354,11 +371,30 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
+    
     if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        self.scrollView.hidden = YES;
+        self.pageViewController.view.frame = CGRectMake(9,163,270*2,268);
+        self.topBarView.alpha = 0;
     } else {
-        self.scrollView.hidden = NO;
+        self.pageViewController.view.frame = CGRectMake(9,163,270,268);
+        self.topBarView.alpha = 1;
     }
+    
+    
+    
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if (fromInterfaceOrientation != UIInterfaceOrientationLandscapeLeft && fromInterfaceOrientation != UIInterfaceOrientationLandscapeRight) {
+        self.pageViewController.view.frame = CGRectMake((self.view.frame.size.width-self.pageViewController.view.frame.size.width)/2.0,
+                                                        17,self.pageViewController.view.frame.size.width, self.pageViewController.view.frame.size.height);
+        self.bookBgView.frame = CGRectMake(-16, 5, self.bookBgView.frame.size.width, self.bookBgView.frame.size.height);
+    } else {
+        self.bookBgView.frame = CGRectMake(-290,151,self.bookBgView.frame.size.width, self.bookBgView.frame.size.height);
+    }
+
+    
+    
 }
 
 #pragma mark - ScrollView Delegates

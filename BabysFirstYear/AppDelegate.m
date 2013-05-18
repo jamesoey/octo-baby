@@ -87,7 +87,8 @@
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     UIInterfaceOrientationMask mask = UIInterfaceOrientationMaskPortrait;
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && [self.navController.visibleViewController isKindOfClass:[MainViewController class]]) {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && ([self.navController.visibleViewController isKindOfClass:[MainViewController class]] ||
+                                                                   [self.navController.visibleViewController isKindOfClass:[FullMomentViewController class]])) {
         mask = UIInterfaceOrientationMaskAll;
     } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         mask = (UIInterfaceOrientationMaskLandscapeLeft|UIInterfaceOrientationMaskLandscapeRight);
