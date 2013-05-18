@@ -68,6 +68,16 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
     
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,300,70)];
+    self.scrollView.delegate = self;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.showsHorizontalScrollIndicator = YES;
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    self.scrollView.contentSize = CGSizeMake(1000, 100);
+    
+    [self.view addSubview:self.scrollView];
+    
+    
     //Step 1
     //Instantiate the UIPageViewController.
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
@@ -94,6 +104,9 @@
     
     //Add the view of the pageViewController to the current view
     [self.view addSubview:self.pageViewController.view];
+    
+    
+    [self.view addSubview:self.scrollView];
     
     //Call didMoveToParentViewController: of the childViewController, the UIPageViewController instance in our case.
     [self.pageViewController didMoveToParentViewController:self];
@@ -311,6 +324,23 @@
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        self.scrollView.hidden = YES;
+    } else {
+        self.scrollView.hidden = NO;
+    }
+}
+
+#pragma mark - ScrollView Delegates
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.x > scrollView.contentSize.width-scrollView.frame.size.width) {
+        scrollView.contentOffset = CGPointMake(0,0);
+    }
+    if (scrollView.contentOffset.x < 0) {
+        scrollView.contentOffset = CGPointMake(scrollView.contentSize.width-scrollView.frame.size.width,0);
+    }
+    
 }
 
 
