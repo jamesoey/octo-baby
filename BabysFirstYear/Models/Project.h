@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSSet *tasks;
+@property (nonatomic, retain) NSNumber *isBoy;
 
 + (Project*)project;
 

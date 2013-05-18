@@ -29,7 +29,6 @@
     
     self.navController = nil;
     if (project == nil) {
-        project = [Project project];
         self.navController = [[UINavigationController alloc] initWithRootViewController:[[OnboardingViewController alloc] init]];
     } else {
         self.navController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithProject:project]];

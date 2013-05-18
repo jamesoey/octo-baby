@@ -7,6 +7,7 @@
         <relationship name="tasks" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="moment" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="isBoy" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +22,7 @@
     </entity>
     <elements>
         <element name="Moment" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="Project" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Project" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Task" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

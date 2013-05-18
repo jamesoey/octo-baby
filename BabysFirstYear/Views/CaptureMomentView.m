@@ -22,13 +22,28 @@
 }
 
 - (void)initView {
-    UILabel *cameraLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, 200, 40)];
+    UILabel *taskLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    taskLabel.text = self.task.caption;
+    [self addSubview:taskLabel];
+    
+    UILabel *cameraLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 200, 40)];
     cameraLabel.text = @"Take a picture with your camera";
     [self addSubview:cameraLabel];
-
-    UILabel *cameraRollLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, 200, 40)];
+    
+    self.cameraButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.cameraButton setTitle:@"Capture" forState:UIControlStateNormal];
+    self.cameraButton.frame = CGRectMake(60, 150, 150, 40);
+    [self addSubview:self.cameraButton];
+    
+    UILabel *cameraRollLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 300, 200, 40)];
     cameraRollLabel.text = @"Select from camera roll";
     [self addSubview:cameraRollLabel];
+
+    self.cameraRollButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.cameraRollButton setTitle:@"Select" forState:UIControlStateNormal];
+    self.cameraRollButton.frame = CGRectMake(60, 400, 150, 40);
+    [self addSubview:self.cameraRollButton];
+    
 }
 
 /*

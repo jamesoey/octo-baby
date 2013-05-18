@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OnboardingViewController : UIViewController
+@interface OnboardingViewController : UIViewController<UITextFieldDelegate>
 
 
 
