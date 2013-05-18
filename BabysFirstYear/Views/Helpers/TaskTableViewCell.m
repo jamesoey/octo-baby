@@ -35,22 +35,12 @@
     
     self.contentView.frame = CGRectMake(0,0,360, 90);
     self.clipsToBounds = YES;
-    
-    UIImage *photo = [UIImage imageNamed:@"bath.jpg"];
-    CGFloat offsetX = (photo.size.width - self.contentView.frame.size.width)/2.0f;
-    CGFloat offsetY = (photo.size.height - self.contentView.frame.size.height)/2.0f;
-    
-    
-    
-    
-    self.photo = [[UIImageView alloc] initWithImage:photo];
-    self.photo.frame = CGRectMake(-offsetX, -offsetY, photo.size.width, photo.size.height);
-    [self.contentView addSubview:self.photo];
+    self.backgroundColor = [UIColor clearColor];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 30)];
     self.titleLabel.text = self.task.caption;
-    self.titleLabel.backgroundColor = [UIColor blackColor];
-    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.textColor = [UIColor blackColor];
+    self.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:self.titleLabel];
     
     self.status = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 100, 30)];
@@ -59,9 +49,7 @@
     } else {
         self.status.text = @"DONE";
     }
-    [self.contentView addSubview:self.status];
-    
-
+    //[self.contentView addSubview:self.status];
 }
 
 - (void)prepareForReuse {

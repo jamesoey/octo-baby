@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PopoverView.h"
 
 @class Project;
 
-@interface MainViewController : UIViewController<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface MainViewController : UIViewController<UIPageViewControllerDelegate,UIPageViewControllerDataSource,PopoverViewDelegate,UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UITableView *tableView;
 
 - (id)initWithProject:(Project*)p;
 

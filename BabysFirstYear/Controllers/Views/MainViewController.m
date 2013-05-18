@@ -16,11 +16,14 @@
 #import "Task.h"
 #import "Moment.h"
 #import "FullMomentViewController.h"
+#import "PopoverView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController () {
     Project *project;
     MainView *mainView;
     NSArray *tasks;
+    PopoverView *pv;
 }
 @end
 
@@ -57,8 +60,9 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor greenColor];
-    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,250,200) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     //Step 1
     //Instantiate the UIPageViewController.
@@ -96,6 +100,12 @@
     pageViewRect = CGRectInset(pageViewRect, 20.0, 40.0);
     self.pageViewController.view.frame = pageViewRect;
     
+    UIButton *temp = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    temp.frame = CGRectMake(0,400, 50,50);
+    [temp addTarget:self action:@selector(tempButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:temp];
+    
     //Step 6:
     //Assign the gestureRecognizers property of our pageViewController to our view's gestureRecognizers property.
     //self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
@@ -108,6 +118,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)tempButton {
+    
+    /*
+    PopoverView *pv = [PopoverView showPopoverAtPoint:CGPointMake(10,400)
+                                               inView:self.view
+                                            withTitle:@"This Week's Moments?"
+                                      withStringArray:[NSArray arrayWithObjects:@"YES", @"NO", nil]
+                                             delegate:self];
+    */
+    
+    pv = [PopoverView showPopoverAtPoint:CGPointMake(10,400) inView:self.view withContentView:self.tableView delegate:self];
+    
+    
+}
+
 
 #pragma mark - UIPageViewControllerDataSource Methods
 
@@ -184,6 +210,80 @@
         NSLog(@"current index = %d", currentTaskIndex);
     }
     */
+}
+
+
+#pragma mark - PopoverViewDelegate Methods
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    NSLog(@"%s item:%d", __PRETTY_FUNCTION__, index);
+    
+    // Figure out which string was selected, store in "string"
+    NSString *string = [[NSArray arrayWithObjects:@"YES", @"NO", nil] objectAtIndex:index];
+    
+    // Show a success image, with the string from the array
+    [popoverView showImage:[UIImage imageNamed:@"success"] withMessage:string];
+    
+    // alternatively, you can use
+    // [popoverView showSuccess];
+    // or
+    // [popoverView showError];
+    
+    // Dismiss the PopoverView after 0.5 seconds
+    [popoverView performSelector:@selector(dismiss) withObject:nil afterDelay:0.5f];
+}
+
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView
+{
+    //[pv release], pv = nil;
+}
+
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	return @"This Week's Moments";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [tasks count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskTableViewCell"];
+    if (!cell) {
+        cell = [[TaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TaskTableViewCell"];
+    }
+    
+    [cell updateWithTask:[tasks objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
+}
+
+#pragma mark - Rotation Delegates
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
 }
 
 
