@@ -46,6 +46,8 @@
     self.nameField.placeholder = @"Baby's First Name";
     self.nameField.textColor = UIColorFromRGB(0x999999);
     self.nameField.layer.cornerRadius = 6.0f;
+    self.nameField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
+    self.nameField.layer.borderWidth = 1.0f;
     self.nameField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     self.nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview: self.nameField];
@@ -55,6 +57,9 @@
     self.dateField.placeholder = @"Baby's Birthdate";
     self.dateField.textColor = UIColorFromRGB(0x999999);
     self.dateField.layer.cornerRadius = 6.0f;
+    self.dateField.layer.cornerRadius = 6.0f;
+    self.dateField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
+    self.dateField.layer.borderWidth = 1.0f;
     self.dateField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     self.dateField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview: self.dateField];

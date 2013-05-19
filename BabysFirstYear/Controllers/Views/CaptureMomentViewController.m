@@ -14,6 +14,7 @@
 #import "AssetsLibraryController.h"
 #import "SflyCore.h"
 #import "SflyData.h"
+#import "Project.h"
 
 @interface CaptureMomentViewController () {
     Task *task;
@@ -61,9 +62,21 @@
     UITapGestureRecognizer *cameraRollTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedCameraRollButton)];
     [captureMomentView.cameraRollView addGestureRecognizer:cameraRollTapRecognizer];
     
+    if (task.caption && ![task.caption isEqualToString:@""]) {
+        captureMomentView.taskNameTextField.text = task.caption;
+    } else {
+        captureMomentView.taskNameTextField.text = [[SflyData project] name];
+    }
+    captureMomentView.taskNameTextField.delegate = self;
     
     
     [self activateCaptureAssets:YES];
+    
+    UITapGestureRecognizer *tapGestureRecognize = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+    tapGestureRecognize.numberOfTapsRequired = 1;
+    [captureMomentView addGestureRecognizer:tapGestureRecognize];
+
+    
     
     self.view = captureMomentView;
 }
@@ -245,14 +258,36 @@
     captureMomentView.cameraRollIcon.hidden = !capture;
     captureMomentView.cameraRollLabel.hidden = !capture;
     captureMomentView.forwardArrow.hidden = !capture;
+    captureMomentView.cameraIcon.hidden = !capture;
     
     captureMomentView.looksGreatButton.hidden = capture;
     captureMomentView.tryAgainButton.hidden = capture;
+    captureMomentView.taskNameTextField.hidden = capture;
+    captureMomentView.cameraButton.enabled = capture;
+}
+
+- (void)animateTextBoxWithActivate:(BOOL)activate {
+    [UIView animateWithDuration:0.5 animations:^{
+    if (activate) {
+        captureMomentView.taskNameTextField.frame = CGRectMake(40, 60, 240, 40);
+        captureMomentView.cameraButton.frame = CGRectMake((320-280)/2.0, 120, 280, 280);
+        captureMomentView.previewImageView.frame = CGRectMake((320-280)/2.0+18, 120+18, 280-2*18, 280-2*18);
+    } else {
+        captureMomentView.taskNameTextField.frame = CGRectMake(40, 380, 240, 40);
+        captureMomentView.cameraButton.frame = CGRectMake((320-280)/2.0, 74, 280, 280);
+        captureMomentView.previewImageView .frame = CGRectMake((320-280)/2.0+18, 74+18, 280-2*18, 280-2*18);
+    }
+    } completion:nil];
+        
 }
 
 #pragma mark - Button Actions
 
 - (void)touchedLooksGreat {
+    if ([captureMomentView.taskNameTextField.text isEqualToString:@""]) {
+        return;
+    }
+    task.caption = captureMomentView.taskNameTextField.text;
     Moment *moment = [Moment moment];
     Moment *momentToDel = [task moment];
     if (momentToDel != nil && [momentToDel.tasks count] == 1) {
@@ -272,6 +307,24 @@
 
 - (void)touchedBackButton {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - Text Fields
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [self animateTextBoxWithActivate:NO];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self animateTextBoxWithActivate:YES];
+    return YES;
+}
+
+- (void) dismiss {
+    [captureMomentView.taskNameTextField resignFirstResponder];
+    [self animateTextBoxWithActivate:NO];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "SflyData.h"
 #import "Project.h"
 #import "SflyUtility.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CaptureMomentView
 
@@ -40,7 +41,7 @@
     UIImage *largeFrameImage = [UIImage imageNamed:@"imgPhotoFrameLarge.png"];
     self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.cameraButton setImage:largeFrameImage forState:UIControlStateNormal];
-    self.cameraButton.frame = CGRectMake((320-largeFrameImage.size.width)/2.0, 74, largeFrameImage.size.width, largeFrameImage.size.height);
+    self.cameraButton.frame = CGRectMake((320-280)/2.0, 74, 280, 280);
     [self addSubview:self.cameraButton];
 
     UIImage *cameraIconImage = [UIImage imageNamed:@"iconCameraLarge.png"];
@@ -58,8 +59,8 @@
     self.cameraLabel.textColor = UIColorFromRGB(0xA5A09D);
     [self addSubview:self.cameraLabel];
     
-    CGFloat margin = 18;
-    self.previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake((320-largeFrameImage.size.width)/2.0+margin, 74+margin, largeFrameImage.size.width-2*margin, largeFrameImage.size.height-2*margin)];
+    //CGFloat margin = 18;
+    self.previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake((320-280)/2.0+18, 74+18, 280-2*18, 280-2*18)];
     self.previewImageView.hidden = YES;
     [self addSubview:self.previewImageView];
     
@@ -86,15 +87,23 @@
     UIImage *looksGreatImage = [UIImage imageNamed:@"btnLooksGreat.png"];
     self.looksGreatButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.looksGreatButton setImage:looksGreatImage forState:UIControlStateNormal];
-    self.looksGreatButton.frame = CGRectMake(320-40-looksGreatImage.size.width, 400, looksGreatImage.size.width, looksGreatImage.size.height);
+    self.looksGreatButton.frame = CGRectMake(320-40-looksGreatImage.size.width, 450, looksGreatImage.size.width, looksGreatImage.size.height);
     [self addSubview:self.looksGreatButton];
     
     UIImage *tryAgainImage = [UIImage imageNamed:@"btnTryAgain.png"];
     self.tryAgainButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.tryAgainButton setImage:tryAgainImage forState:UIControlStateNormal];
-    self.tryAgainButton.frame = CGRectMake(40, 400, tryAgainImage.size.width, tryAgainImage.size.height);
+    self.tryAgainButton.frame = CGRectMake(40, 450, tryAgainImage.size.width, tryAgainImage.size.height);
     [self addSubview:self.tryAgainButton];
-    
+
+    self.taskNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(40, 380, 240, 40)];
+    self.taskNameTextField.backgroundColor = [UIColor whiteColor];
+    self.taskNameTextField.layer.cornerRadius = 6.0f;
+    self.taskNameTextField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
+    self.taskNameTextField.layer.borderWidth = 1.0f;
+    self.taskNameTextField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.taskNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    [self addSubview:self.taskNameTextField];
 }
 
 /*

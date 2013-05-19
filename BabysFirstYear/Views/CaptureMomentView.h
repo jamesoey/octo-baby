@@ -33,6 +33,8 @@
 @property (nonatomic, retain) UIImageView *cameraIcon;
 @property (nonatomic, retain) UILabel *cameraLabel;
 
+@property (nonatomic, retain) UITextField *taskNameTextField;
+
 - (id)initWithFrame:(CGRect)frame task:(Task*)t;
 
 @end

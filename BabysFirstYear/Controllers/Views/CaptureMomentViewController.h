@@ -10,7 +10,7 @@
 
 @class Task;
 
-@interface CaptureMomentViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface CaptureMomentViewController : UIViewController<UITextFieldDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 - (id)initWithTask:(Task*)t;
 
