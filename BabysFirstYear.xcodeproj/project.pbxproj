@@ -145,7 +145,7 @@
 		D445D50B1746A84600E74A14 /* FullMomentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullMomentView.h; path = Views/FullMomentView.h; sourceTree = "<group>"; };
 		D445D50C1746A84600E74A14 /* FullMomentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullMomentView.m; path = Views/FullMomentView.m; sourceTree = "<group>"; };
 		D445D50E1746C87B00E74A14 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		D48291EB1745C4720087DD19 /* BabysFirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabysFirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D48291EB1745C4720087DD19 /* Baby's First.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Baby's First.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48291EE1745C4720087DD19 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D48291F01745C4720087DD19 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D48291F21745C4720087DD19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -310,7 +310,7 @@
 		D48291EC1745C4720087DD19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D48291EB1745C4720087DD19 /* BabysFirstYear.app */,
+				D48291EB1745C4720087DD19 /* Baby's First.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -595,7 +595,7 @@
 			);
 			name = BabysFirstYear;
 			productName = BabysFirstYear;
-			productReference = D48291EB1745C4720087DD19 /* BabysFirstYear.app */;
+			productReference = D48291EB1745C4720087DD19 /* Baby's First.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -832,10 +832,12 @@
 		D482920E1745C4720087DD19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: James Oey (4BF94BCRL5)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabysFirstYear/BabysFirstYear-Prefix.pch";
 				INFOPLIST_FILE = "BabysFirstYear/BabysFirstYear-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Baby's First";
+				PROVISIONING_PROFILE = "E48531AC-D0FB-4505-83E3-53EDF7F7FE8E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -846,7 +848,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BabysFirstYear/BabysFirstYear-Prefix.pch";
 				INFOPLIST_FILE = "BabysFirstYear/BabysFirstYear-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Baby's First";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

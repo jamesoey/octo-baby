@@ -24,6 +24,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
+    
     [SflyCore initWithAppDelegate:self];
     Project *project = [SflyData project];
     
@@ -177,6 +179,27 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark - APNS service
+
+// Delegation methods
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+    //const void *devTokenBytes = [devToken bytes];
+    //self.registered = YES;
+    //[self sendProviderDeviceToken:devTokenBytes]; // custom method
+    NSString *devTokenString = [[devToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    devTokenString = [devTokenString stringByReplacingOccurrencesOfString:@">" withString:@""];
+    devTokenString = [devTokenString stringByReplacingOccurrencesOfString: @" " withString: @""];
+    NSLog(@"APNS token:%@", devTokenString);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+    NSLog(@"Error in APNS registration. Error: %@", err);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"here");
 }
 
 @end
