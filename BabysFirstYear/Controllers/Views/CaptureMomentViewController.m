@@ -20,6 +20,8 @@
     CaptureMomentView *captureMomentView;
     UIImagePickerController *cameraUI;
     UIImagePickerController *mediaUI;
+    UIImage *currentImage;
+    NSURL *currentURL;
 }
 @end
 
@@ -51,9 +53,17 @@
     [captureMomentView.cameraButton addTarget:self action:@selector(touchedCameraButton) forControlEvents:UIControlEventTouchUpInside];
     //[captureMomentView.cameraButton addTarget:self action:@selector(touchedCameraRollButton) forControlEvents:UIControlEventTouchUpInside];
     
+    [captureMomentView.tryAgainButton addTarget:self action:@selector(touchedTryAgain) forControlEvents:UIControlEventTouchUpInside];
+    [captureMomentView.looksGreatButton addTarget:self action:@selector(touchedLooksGreat) forControlEvents:UIControlEventTouchUpInside];
+    
+    [captureMomentView.backButton addTarget:self action:@selector(touchedBackButton) forControlEvents:UIControlEventTouchUpInside];
+    
     UITapGestureRecognizer *cameraRollTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchedCameraRollButton)];
     [captureMomentView.cameraRollView addGestureRecognizer:cameraRollTapRecognizer];
     
+    
+    
+    [self activateCaptureAssets:YES];
     
     self.view = captureMomentView;
 }
@@ -152,23 +162,22 @@
  didFinishPickingMediaWithInfo: (NSDictionary *) info {
     
     if (picker == mediaUI) {
-        UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-
-        Moment *moment = [Moment moment];
-        Moment *momentToDel = [task moment];
-        if (momentToDel != nil && [momentToDel.tasks count] == 1) {
-            [[SflyCore context] deleteObject:momentToDel];
-        }
-        [task setMoment:moment];
+        currentImage = [info valueForKey:UIImagePickerControllerOriginalImage];
         
-        [[AssetsLibraryController sharedController] saveImage:image toMoment:moment completion:^(void) {
+        UIImage *croppedImage = [self cropCameraImage:currentImage];
+        
+        [captureMomentView.previewImageView setImage:croppedImage];
+        captureMomentView.previewImageView.hidden = NO;
+
+        [[AssetsLibraryController sharedController] saveImage:currentImage completion:^(NSURL *assetURL) {
+            currentURL = assetURL;
             [self dismissViewControllerAnimated:YES completion:^{
-                [self dismissViewControllerAnimated:YES completion:nil];
+                [self activateCaptureAssets:NO];
             }];
         }];
     } else {
         NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
-        UIImage *originalImage, *editedImage, *imageToSave;
+        UIImage *originalImage, *editedImage;
     
         // Handle a still image capture
         if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0)
@@ -180,24 +189,23 @@
                                          UIImagePickerControllerOriginalImage];
         
             if (editedImage) {
-                imageToSave = editedImage;
+                currentImage = editedImage;
             } else {
-                imageToSave = originalImage;
+                currentImage = originalImage;
             }
         
             // Save the new image (original or edited) to the Camera Roll
             //UIImageWriteToSavedPhotosAlbum (imageToSave, nil, nil , nil);
 
+            UIImage *croppedImage = [self cropCameraImage:currentImage];
+            
+            [captureMomentView.previewImageView setImage:croppedImage];
+            captureMomentView.previewImageView.hidden = NO;
+
         
-            Moment *moment = [Moment moment];
-            Moment *momentToDel = [task moment];
-            if (momentToDel != nil && [momentToDel.tasks count] == 1) {
-                [[SflyCore context] deleteObject:momentToDel];
-            }
-            [task setMoment:moment];
-        
-            [[AssetsLibraryController sharedController] saveImage:imageToSave toMoment:moment completion:^(void) {
-                [self dismissViewControllerAnimated:YES completion:nil];
+            [[AssetsLibraryController sharedController] saveImage:currentImage completion:^(NSURL *assetURL) {
+                currentURL = assetURL;
+                [self activateCaptureAssets:NO];
             }];
 
         }
@@ -217,6 +225,53 @@
     
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
+
+- (UIImage *)cropCameraImage:(UIImage*)img {
+    CGImageRef imageToBeResized = img.CGImage;
+    CGFloat w = img.size.width;
+    CGFloat h = img.size.height;
+    
+    CGImageRef partOfImageAsCG = CGImageCreateWithImageInRect(imageToBeResized, CGRectMake(0, 0.2*h, w, w));
+
+    return [UIImage imageWithCGImage:partOfImageAsCG scale:1.0 orientation:[img imageOrientation]];
+}
+
+#pragma mark - View Toggling
+
+- (void)activateCaptureAssets:(BOOL)capture {
+    captureMomentView.topLine.hidden = !capture;
+    captureMomentView.botLine.hidden = !capture;
+    captureMomentView.cameraRollIcon.hidden = !capture;
+    captureMomentView.cameraRollLabel.hidden = !capture;
+    captureMomentView.forwardArrow.hidden = !capture;
+    
+    captureMomentView.looksGreatButton.hidden = capture;
+    captureMomentView.tryAgainButton.hidden = capture;
+}
+
+#pragma mark - Button Actions
+
+- (void)touchedLooksGreat {
+    Moment *moment = [Moment moment];
+    Moment *momentToDel = [task moment];
+    if (momentToDel != nil && [momentToDel.tasks count] == 1) {
+        [[SflyCore context] deleteObject:momentToDel];
+    }
+    [task setMoment:moment];
+    moment.uid = [currentURL absoluteString];
+    [SflyCore saveContext];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)touchedTryAgain {
+    captureMomentView.previewImageView.hidden = YES;
+    
+    [self activateCaptureAssets:YES];
+}
+
+- (void)touchedBackButton {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

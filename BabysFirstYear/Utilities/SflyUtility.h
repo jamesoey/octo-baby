@@ -66,6 +66,6 @@ typedef enum {
 
 
 + (UIImage*)doubleLine;
-+ (void)addLineAtY:(CGFloat)y toView:(UIView*)view;
++ (UIView*)horizLineAtY:(CGFloat)y;
 
 @end

@@ -27,10 +27,9 @@
 - (void)initView {
     [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]]];
     
-    [SflyUtility addLineAtY:55 toView:self];
-    [SflyUtility addLineAtY:185 toView:self];
-    [SflyUtility addLineAtY:400 toView:self];
-    
+    [self addSubview:[SflyUtility horizLineAtY:55]];
+    [self addSubview:[SflyUtility horizLineAtY:185]];
+    [self addSubview:[SflyUtility horizLineAtY:400]];
     
     UIImage *shutterflyTitleImage = [UIImage imageNamed:@"imgSflyLogo.png"];
     UIImageView *shutterflyTitle = [[UIImageView alloc] initWithImage:shutterflyTitleImage];

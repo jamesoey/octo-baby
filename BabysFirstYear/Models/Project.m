@@ -30,19 +30,28 @@
     Task *t1 = [Task taskWithCaption:@"baby's arrival" weeksFromStart:1];
     [project addTasksObject:t1];
     Moment *m1 = [Moment moment];
-    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby0.jpg"] toMoment:m1 completion:nil];
+    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby0.jpg"] completion:^(NSURL *assetURL) {
+        m1.uid = [assetURL absoluteString];
+        [SflyCore saveContext];
+    }];
     [t1 setMoment:m1];
     
     Task *t2 = [Task taskWithCaption:@"tiny body part with parent body part" weeksFromStart:2];
     [project addTasksObject:t2];
     Moment *m2 = [Moment moment];
-    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby1.jpg"] toMoment:m2 completion:nil];
+    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby1.jpg"] completion:^(NSURL *assetURL) {
+        m2.uid = [assetURL absoluteString];
+        [SflyCore saveContext];
+    }];
     [t2 setMoment:m2];
 
     Task *t3 = [Task taskWithCaption:@"family photo" weeksFromStart:3];
     [project addTasksObject:t3];
     Moment *m3 = [Moment moment];
-    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby2.jpg"] toMoment:m3 completion:nil];
+    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"baby2.jpg"] completion:^(NSURL *assetURL) {
+        m3.uid = [assetURL absoluteString];
+        [SflyCore saveContext];
+    }];
     [t3 setMoment:m3];
 
     [project addTasksObject:[Task taskWithCaption:@"baby's nursery or house" weeksFromStart:4]];
@@ -55,7 +64,10 @@
     Task *t10 = [Task taskWithCaption:@"baby time/water time" weeksFromStart:10];
     [project addTasksObject:t10];
     Moment *m10 = [Moment moment];
-    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"bath.jpg"] toMoment:m10 completion:nil];
+    [[AssetsLibraryController sharedController] saveImage:[UIImage imageNamed:@"bath.jpg"] completion:^(NSURL *assetURL) {
+        m10.uid = [assetURL absoluteString];
+        [SflyCore saveContext];
+    }];
     [t10 setMoment:m10];
     
     [project addTasksObject:[Task taskWithCaption:@"baby in crib" weeksFromStart:11]];

@@ -26,9 +26,10 @@
     self.backgroundColor = UIColorFromRGB(0xA5A09D);
     
     UIImage *iconMenuImage = [UIImage imageNamed:@"iconMenu.png"];
-    UIImageView *iconMenu = [[UIImageView alloc] initWithImage:iconMenuImage];
-    [iconMenu setFrame:CGRectMake(0, 0, iconMenuImage.size.width, iconMenuImage.size.height)];
-    [self addSubview:iconMenu];
+    self.iconMenuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.iconMenuButton setImage:iconMenuImage forState:UIControlStateNormal];
+    self.iconMenuButton.frame = CGRectMake(0, 0, iconMenuImage.size.width, iconMenuImage.size.height);
+    [self addSubview:self.iconMenuButton];
     
     Project *project = [SflyData project];
     if (project) {
