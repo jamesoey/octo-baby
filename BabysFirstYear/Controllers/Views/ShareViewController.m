@@ -45,6 +45,7 @@
     
     TopBarView *topBarView = [[TopBarView alloc] initWithTitle:self.task.caption];
     [self.view addSubview:topBarView];
+    [topBarView.iconMenuButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]];
     

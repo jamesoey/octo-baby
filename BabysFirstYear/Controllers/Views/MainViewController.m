@@ -180,7 +180,7 @@
     self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *camera = [UIImage imageNamed:@"iconCameraSmall.png"];
     [self.cameraButton setImage:camera forState:UIControlStateNormal];
-    [self.cameraButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
+    //[self.cameraButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
     self.cameraButton.frame = CGRectMake(135,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
     [self.view addSubview:self.cameraButton];
     
