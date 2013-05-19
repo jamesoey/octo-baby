@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIImageView *photo;
 @property (nonatomic, strong) UIImageView *bg;
 @property (nonatomic, strong) UIImageView *spine;
+@property (nonatomic, strong) UIImageView *specialBg;
 @property int index;
 
 - (id)initWithTask:(Task*)t andIndex:(int)index;

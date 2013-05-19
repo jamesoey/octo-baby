@@ -64,6 +64,10 @@
     if (self.photo.superview) {
         [self.photo removeFromSuperview];
     }
+    if (self.specialBg.superview) {
+        [self.specialBg removeFromSuperview];
+        self.specialBg.image = nil;
+    }
     
     self.bg = [[UIImageView alloc] init];
     self.bg.frame = CGRectMake(0,0,270,268);
@@ -72,14 +76,24 @@
     self.photo = [[UIImageView alloc] init];
     
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
+        
+        
         // Odd page since we start at index of 0 not 1
         // LEFT SIDE
         if (self.index % 2 == 0) {
             UIImage *bookOverLayLeft = [UIImage imageNamed:@"imgLeftSpineShadow.png"];
             self.spine = [[UIImageView alloc] initWithImage:bookOverLayLeft];
             self.spine.frame = CGRectMake(270-bookOverLayLeft.size.width,0,bookOverLayLeft.size.width,
-                                                   bookOverLayLeft.size.height-1);
-            self.photo.frame = CGRectMake(9,18,230,230);
+                                          bookOverLayLeft.size.height-1);
+
+            // Special case for the first task image
+            if (self.index == 0) {
+                self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+                self.specialBg.frame = CGRectMake(9,18,230,230);
+                self.photo.frame = CGRectMake(25,35,200,200);
+            } else {
+                self.photo.frame = CGRectMake(9,18,230,230);
+            }
         } else {
             UIImage *bookOverLayRight = [UIImage imageNamed:@"imgRightSpineShadow.png"];
             self.spine = [[UIImageView alloc] initWithImage:bookOverLayRight];
@@ -90,17 +104,29 @@
         UIImage *bookOverLayRight = [UIImage imageNamed:@"imgRightSpineShadow.png"];
         self.spine = [[UIImageView alloc] initWithImage:bookOverLayRight];
         self.spine.frame = CGRectMake(0,0,bookOverLayRight.size.width, bookOverLayRight.size.height-1);
-        self.photo.frame = CGRectMake(30,18,230,230);
+
+        // Special case for the first task image
+        if (self.index == 0) {
+            self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+            self.specialBg.frame = CGRectMake(30,18,230,230);
+            self.photo.frame = CGRectMake(45,35,200,200);
+        } else {
+            self.photo.frame = CGRectMake(30,18,230,230);
+        }
     }
     
+    self.specialBg.alpha = 0;
     self.bg.alpha = 0;
+    self.photo.alpha = 0;
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.bg.alpha = 1;
+        self.specialBg.alpha = 1;
     }];
-    self.photo.alpha = 0;
     
     [self.view addSubview:self.bg];
     [self.view addSubview:self.spine];
+    [self.view addSubview:self.specialBg];
     [self.view addSubview:self.photo];
     [self refreshPhoto];
 }
@@ -118,6 +144,7 @@
     self.bg.alpha = 0;
     self.photo.alpha = 0;
     self.spine.alpha = 0;
+    self.specialBg.alpha = 0;
 }
 
 - (void)animateIn {
