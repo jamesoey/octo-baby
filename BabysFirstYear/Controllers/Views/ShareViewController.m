@@ -11,6 +11,9 @@
 #import "AssetsLibraryController.h"
 #import "TopBarView.h"
 #import <QuartzCore/QuartzCore.h>
+#import <Social/Social.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 @interface ShareViewController ()
 
@@ -26,10 +29,11 @@
     return self;
 }
 
-- (id)initWithTask:(Task *)t {
+- (id)initWithTask:(Task *)t andProject:(Project *)p {
     self = [super init];
     if (self) {
         self.task = t;
+        self.project = p;
     }
     return self;
 }
@@ -76,20 +80,38 @@
     UIButton *share = [UIButton buttonWithType:UIButtonTypeCustom];
     [share setImage:shareImage forState:UIControlStateNormal];
     share.frame = CGRectMake(60,482,shareImage.size.width/2.0,shareImage.size.height/2.0);
-    [share addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [share addTarget:self action:@selector(emailPDFFromUIView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:share];
     
     UIImage *uploadImage = [UIImage imageNamed:@"fmv_upload_btn.png"];
     UIButton *upload = [UIButton buttonWithType:UIButtonTypeCustom];
     [upload setImage:uploadImage forState:UIControlStateNormal];
     upload.frame = CGRectMake(180,482,uploadImage.size.width/2.0,uploadImage.size.height/2.0);
-    [upload addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [upload addTarget:self action:@selector(emailPDFFromUIView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:upload];
     
     UIImage *love = [UIImage imageNamed:@"side_menu_love_photos.png"];
     UIImageView *loveImage = [[UIImageView alloc] initWithImage:love];
     loveImage.frame = CGRectMake(100,400,love.size.width/2.0, love.size.height/2.0);
     [self.view addSubview:loveImage];
+    
+    
+    NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
+    NSArray *tasks = [self.project.tasks sortedArrayUsingDescriptors:@[weekSort]];
+    
+    self.pdfView = [[UIView alloc] initWithFrame:CGRectMake(0,0,400,320*[tasks count]+20)];
+    
+    int yoffset = 20;
+    for (Task *t in tasks) {
+        
+        UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(50,yoffset,300,300)];
+        [[AssetsLibraryController sharedController] imageForURL:t.moment.uid success:^(UIImage *image) {
+            photo.image = image;
+        } failureBlock:^(NSError *error) {
+        }];
+        yoffset += 320;
+        [self.pdfView addSubview:photo];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -100,6 +122,30 @@
 
 - (void)back {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)emailPDFFromUIView {
+    
+    NSMutableData *pdfData = [NSMutableData data];
+    UIGraphicsBeginPDFContextToData(pdfData, self.pdfView.bounds, nil);
+    UIGraphicsBeginPDFPage();
+    CGContextRef pdfContext = UIGraphicsGetCurrentContext();
+    [self.pdfView.layer renderInContext:pdfContext];
+    UIGraphicsEndPDFContext();
+    
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        mailer.mailComposeDelegate = self;
+        [mailer setSubject:[NSString stringWithFormat:@"Print Order: %@'s First Year Photobook!", self.project.name]];
+        [mailer setMessageBody:@"This photobook is amazing! Take all my moonies." isHTML:NO];
+        [mailer addAttachmentData:pdfData mimeType:@"application/pdf" fileName:@"BabysFirstYear"];
+        [self presentModalViewController:mailer animated:YES];
+    }
+    
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 @end
