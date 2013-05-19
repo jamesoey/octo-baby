@@ -11,6 +11,7 @@
 #import "Project.h"
 #import "MainViewController.h"
 #import "SflyData.h"
+#import "SflyCore.h"
 
 @interface OnboardingViewController () {
     OnboardingView *onboardingView;
@@ -83,21 +84,21 @@
 - (void) submitProject {
     if (![self validateForm]) {
     } else {
-        [Project project];
+        [Project projectWithName:onboardingView.nameField.text];
 
         Project *project = [SflyData project];
-        project.name = onboardingView.nameField.text;
         project.startTime = onboardingView.birthdatePicker.date;
         if (onboardingView.girlButton.selected) {
             project.isBoy = @NO;
         } else {
             project.isBoy = @YES;
         }
-        [self performSelector:@selector(presentNextView:) withObject:project afterDelay:0.5];
+        [self performSelector:@selector(presentNextView:) withObject:project afterDelay:5];
     }
 }
 
 - (void)presentNextView:(Project*)project {
+    [SflyCore saveContext];    
     MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
     [self presentViewController:mvController animated:YES completion:nil];
 }

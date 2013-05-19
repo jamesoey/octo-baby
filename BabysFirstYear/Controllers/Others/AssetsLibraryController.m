@@ -20,13 +20,13 @@
     dispatch_once(&onceToken, ^{
         _sharedController = [AssetsLibraryController new];
         _sharedController.assetsLibrary = [[ALAssetsLibrary alloc] init];
+        _sharedController.queue =[[NSOperationQueue alloc] init];
     });
     return _sharedController;
 }
 
 - (void)saveImage:(UIImage*)image completion:(void (^)(NSURL *assetURL))successBlock {
     CGImageRef imageRef = image.CGImage;
-    
     [self.assetsLibrary writeImageToSavedPhotosAlbum:imageRef
                                          orientation:(ALAssetOrientation)[image imageOrientation]
                                      completionBlock:^(NSURL *assetURL, NSError *error) {
@@ -35,7 +35,7 @@
                                                  successBlock(assetURL);
                                              }
                                          } else {
-                                             NSLog(@"ERROR: Could not write image to photo album");
+                                             NSLog(@"ERROR: Could not write image to photo album. %@", [error localizedDescription]);
                                          }
                                      }];
 }

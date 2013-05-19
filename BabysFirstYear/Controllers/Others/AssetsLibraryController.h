@@ -17,5 +17,5 @@
 - (void)imageForURL:(NSString*)urlString success:(void (^)(UIImage *image))successBlock failureBlock:(void (^)(NSError *error))failureBlock;
 
 @property (nonatomic, retain) ALAssetsLibrary *assetsLibrary;
-
+@property (nonatomic, retain) NSOperationQueue *queue;
 @end

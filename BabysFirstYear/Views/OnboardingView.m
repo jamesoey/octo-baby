@@ -50,6 +50,7 @@
     self.nameField.layer.borderWidth = 1.0f;
     self.nameField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     self.nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.nameField.autocapitalizationType = UITextAutocapitalizationTypeWords;
     [self addSubview: self.nameField];
 
     self.dateField = [[UITextField alloc] initWithFrame:CGRectMake(20, 270, 280, 30)];

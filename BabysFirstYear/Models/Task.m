@@ -11,6 +11,7 @@
 #import "Project.h"
 #import "SflyCore.h"
 #import "SflyUtility.h"
+#import "SflyData.h"
 
 @implementation Task
 
@@ -25,10 +26,12 @@
     
     task.uid = [SflyUtility genUUID];
     task.weeksFromStart = [NSNumber numberWithInt:weeks];
-    task.caption = cap;
+    NSString *name = [[SflyData project] name];
     
-    [SflyCore saveContext];
-    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"BABY" options:0 error:nil];
+    NSMutableString *mutableCap = [NSMutableString stringWithString:cap];
+    [regex replaceMatchesInString:mutableCap options:0 range:NSMakeRange(0, [cap length]) withTemplate:name];
+    task.caption = mutableCap;
     return task;
 
 }

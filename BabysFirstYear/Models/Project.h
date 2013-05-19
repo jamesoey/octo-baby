@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSSet *tasks;
 @property (nonatomic, retain) NSNumber *isBoy;
 
-+ (Project*)project;
++ (Project*)projectWithName:(NSString*)name;
 
 @end
 
