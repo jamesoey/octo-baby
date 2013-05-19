@@ -10,6 +10,9 @@
 
 @interface TopBarView : UIView
 
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIButton *iconMenuButton;
+
+- (id)initWithTitle:(NSString*)title;
 
 @end

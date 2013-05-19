@@ -20,6 +20,7 @@
 #import "TopBarView.h"
 #import "ShareViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "RewardsViewController.h"
 
 @interface MainViewController () {
     Project *project;
@@ -186,7 +187,7 @@
     self.progressButton = [UIButton buttonWithType:UIButtonTypeCustom];
     UIImage *progress = [UIImage imageNamed:@"iconProgress.png"];
     [self.progressButton setImage:progress forState:UIControlStateNormal];
-    [self.progressButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
+    [self.progressButton addTarget:self action:@selector(rewardsTransition) forControlEvents:UIControlEventTouchUpInside];
     self.progressButton.frame = CGRectMake(265,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
     [self.view addSubview:self.progressButton];
     
@@ -259,6 +260,12 @@
     
     pv = [PopoverView showPopoverAtPoint:CGPointMake(37,500) inView:self.view withContentView:self.tableView delegate:self];
     [self stopAnimateIdeaIcon];
+}
+
+- (void)rewardsTransition {
+    RewardsViewController *rewardsViewController = [[RewardsViewController alloc] initWithMode:0];
+    
+    [self presentViewController:rewardsViewController animated:YES completion:nil];
 }
 
 - (UIImage *)squareWithColor:(UIColor *)color {

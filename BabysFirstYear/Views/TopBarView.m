@@ -17,10 +17,22 @@
     self = [super initWithFrame:CGRectMake(0, 0, 320, 44)];
     if (self) {
         // Initialization code
+        self.title = nil;
         [self initView];
     }
     return self;
 }
+
+- (id)initWithTitle:(NSString*)title {
+    self = [super initWithFrame:CGRectMake(0, 0, 320, 44)];
+    if (self) {
+        // Initialization code
+        self.title = title;
+        [self initView];
+    }
+    return self;
+}
+
 
 - (void)initView {
     self.backgroundColor = UIColorFromRGB(0xA5A09D);
@@ -33,7 +45,12 @@
     
     Project *project = [SflyData project];
     if (project) {
-        NSString *titleString = [NSString stringWithFormat:@"%@'s 1st Year", project.name];
+        NSString *titleString;
+        if (self.title) {
+            titleString = self.title;
+        } else {
+            titleString = [NSString stringWithFormat:@"%@'s 1st Year", project.name];
+        }
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         titleLabel.text = titleString;
         titleLabel.backgroundColor = [UIColor clearColor];

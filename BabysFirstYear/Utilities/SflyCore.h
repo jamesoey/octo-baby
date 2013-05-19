@@ -26,5 +26,7 @@
 + (void)saveContext;
 + (NSOperationQueue*)imageQueue;
 + (CGFloat)drawScale;
++ (void)storeMainViewController:(UIViewController*)vc;
++ (UIViewController*)mainViewController;
 
 @end

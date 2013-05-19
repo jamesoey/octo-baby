@@ -13,6 +13,7 @@
 #import "Project.h"
 #import "FullMomentViewController.h"
 #import "CaptureMomentViewController.h"
+#import "RewardsViewController.h"
 
 @implementation AppDelegate
 
@@ -34,7 +35,9 @@
     if (project == nil) {
         self.navController = [[UINavigationController alloc] initWithRootViewController:[[OnboardingViewController alloc] init]];
     } else {
-        self.navController = [[UINavigationController alloc] initWithRootViewController:[[MainViewController alloc] initWithProject:project]];
+        MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
+        [SflyCore storeMainViewController:mvController];
+        self.navController = [[UINavigationController alloc] initWithRootViewController:mvController];
     }
     
     [self.navController setNavigationBarHidden:YES];
@@ -200,14 +203,29 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    //UIViewController *mainViewController = [SflyCore mainViewController];
+    //[self.navController popToViewController:mainViewController animated:YES];
+    UIViewController *currentVC = self.navController.visibleViewController;
+    NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
+    NSArray *tasks = [[SflyData project].tasks sortedArrayUsingDescriptors:@[weekSort]];
+
+    NSString *typeString = [userInfo valueForKey:@"type"];
     if ([[userInfo valueForKey:@"type"] isEqualToString:@"0"]) {
-        UIViewController *currentVC = self.navController.visibleViewController;
-        NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
-        NSArray *tasks = [[SflyData project].tasks sortedArrayUsingDescriptors:@[weekSort]];
 
         CaptureMomentViewController *cmViewController =
         [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:19]];
+        //[mainViewController presentViewController:cmViewController animated:YES completion:nil];
         [currentVC presentViewController:cmViewController animated:YES completion:nil];
+    } else if ([[userInfo valueForKey:@"type"] isEqualToString:@"1"]) {
+        RewardsViewController *rewardsViewController =
+        [[RewardsViewController alloc] initWithMode:1];
+        //[mainViewController presentViewController:cmViewController animated:YES completion:nil];
+        [currentVC presentViewController:rewardsViewController animated:YES completion:nil];
+    } else if ([[userInfo valueForKey:@"type"] isEqualToString:@"2"]) {
+        RewardsViewController *rewardsViewController =
+        [[RewardsViewController alloc] initWithMode:2];
+        //[mainViewController presentViewController:cmViewController animated:YES completion:nil];
+        [currentVC presentViewController:rewardsViewController animated:YES completion:nil];
     }
 }
 

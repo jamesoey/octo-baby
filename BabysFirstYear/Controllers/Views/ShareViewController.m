@@ -43,7 +43,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    TopBarView *topBarView = [[TopBarView alloc] init];
+    TopBarView *topBarView = [[TopBarView alloc] initWithTitle:self.task.caption];
     [self.view addSubview:topBarView];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]];

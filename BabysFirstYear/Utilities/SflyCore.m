@@ -11,6 +11,7 @@
 @implementation SflyCore
 
 static id<SflyLibraryDelegate> appDelegate;
+static UIViewController *mainVC;
 
 + (void)initWithAppDelegate:(id<SflyLibraryDelegate>)del {
     appDelegate = del;
@@ -56,5 +57,13 @@ static id<SflyLibraryDelegate> appDelegate;
         return 1.0;
     }
 }*/
+
++ (void)storeMainViewController:(UIViewController*)vc {
+    mainVC = vc;
+}
+
++ (UIViewController*)mainViewController {
+    return mainVC;
+}
 
 @end

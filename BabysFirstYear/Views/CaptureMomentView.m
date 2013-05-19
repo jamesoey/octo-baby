@@ -34,7 +34,7 @@
     [self addSubview:self.topLine];
     [self addSubview:self.botLine];
     
-    TopBarView *topBarView = [[TopBarView alloc] init];
+    TopBarView *topBarView = [[TopBarView alloc] initWithTitle:@"Capture Moment"];
     [self addSubview:topBarView];
     self.backButton = topBarView.iconMenuButton;
     

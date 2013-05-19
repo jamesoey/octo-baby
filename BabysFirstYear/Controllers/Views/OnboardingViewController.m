@@ -99,8 +99,9 @@
     NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
     NSArray *tasks = [project.tasks sortedArrayUsingDescriptors:@[weekSort]];
 
-        MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
-        [self presentViewController:mvController animated:YES completion:^{
+    MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
+    [SflyCore storeMainViewController:mvController];
+    [self presentViewController:mvController animated:YES completion:^{
             CaptureMomentViewController *cmViewController =
             [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:0]];
             [mvController presentViewController:cmViewController animated:YES completion:nil];
