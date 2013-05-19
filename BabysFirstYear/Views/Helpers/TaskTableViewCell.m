@@ -37,25 +37,24 @@
     self.clipsToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 30)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 200, 30)];
     self.titleLabel.text = self.task.caption;
     self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.font = [UIFont systemFontOfSize:12];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.titleLabel];
     
-    self.status = [[UILabel alloc] initWithFrame:CGRectMake(170, 0, 100, 30)];
-    if (self.task.moment == nil) {
-        self.status.text = @"NOT DONE";
-    } else {
-        self.status.text = @"DONE";
-    }
-    //[self.contentView addSubview:self.status];
+    UIImage *a = [UIImage imageNamed:@"disclosure.png"];
+    self.arrow = [[UIImageView alloc] initWithImage:a];
+    self.arrow.frame = CGRectMake(230,15,a.size.width,a.size.height);
+    [self.contentView addSubview:self.arrow];
 }
 
 - (void)prepareForReuse {
     self.titleLabel.text = @"";
     self.status.text = @"";
+    [self.titleLabel removeFromSuperview];
+    [self.arrow removeFromSuperview];
 }
 
 @end

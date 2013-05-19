@@ -101,6 +101,14 @@
 		FC156CC61747F140002FF09A /* side_menu_love_photos.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CC51747F140002FF09A /* side_menu_love_photos.png */; };
 		FC156CC9174822B6002FF09A /* multiselect_bar_share.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CC8174822B5002FF09A /* multiselect_bar_share.png */; };
 		FC156CCC174826DD002FF09A /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC156CCB174826DC002FF09A /* ShareViewController.m */; };
+		FC156CCE17484B7A002FF09A /* fmv_share_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CCD17484B77002FF09A /* fmv_share_btn.png */; };
+		FC156CD017484B91002FF09A /* fmv_upload_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CCF17484B8E002FF09A /* fmv_upload_btn.png */; };
+		FC156CD217484BA5002FF09A /* fmv_mail_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CD117484BA3002FF09A /* fmv_mail_btn.png */; };
+		FC156CD417484BD3002FF09A /* fmv_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CD317484BD1002FF09A /* fmv_overlay.png */; };
+		FC156CD717484CEA002FF09A /* img_delete_face_tag_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CD517484CE0002FF09A /* img_delete_face_tag_btn.png */; };
+		FC156CD817484CEA002FF09A /* img_delete_face_tag_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CD617484CE6002FF09A /* img_delete_face_tag_btn@2x.png */; };
+		FC156CDB17484F32002FF09A /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CD917484F20002FF09A /* disclosure.png */; };
+		FC156CDC17484F32002FF09A /* disclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC156CDA17484F28002FF09A /* disclosure@2x.png */; };
 		FC25189F1746A27B00677D0D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189D1746A27B00677D0D /* Icon.png */; };
 		FC2518A01746A27B00677D0D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC25189E1746A27B00677D0D /* Icon@2x.png */; };
 		FC2518B11746BC2900677D0D /* btnBegin.png in Resources */ = {isa = PBXBuildFile; fileRef = FC2518A11746BC2300677D0D /* btnBegin.png */; };
@@ -240,6 +248,14 @@
 		FC156CC8174822B5002FF09A /* multiselect_bar_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiselect_bar_share.png; sourceTree = "<group>"; };
 		FC156CCA174826DC002FF09A /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareViewController.h; path = Controllers/Views/ShareViewController.h; sourceTree = "<group>"; };
 		FC156CCB174826DC002FF09A /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareViewController.m; path = Controllers/Views/ShareViewController.m; sourceTree = "<group>"; };
+		FC156CCD17484B77002FF09A /* fmv_share_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fmv_share_btn.png; sourceTree = "<group>"; };
+		FC156CCF17484B8E002FF09A /* fmv_upload_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fmv_upload_btn.png; sourceTree = "<group>"; };
+		FC156CD117484BA3002FF09A /* fmv_mail_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fmv_mail_btn.png; sourceTree = "<group>"; };
+		FC156CD317484BD1002FF09A /* fmv_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fmv_overlay.png; sourceTree = "<group>"; };
+		FC156CD517484CE0002FF09A /* img_delete_face_tag_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_delete_face_tag_btn.png; sourceTree = "<group>"; };
+		FC156CD617484CE6002FF09A /* img_delete_face_tag_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_delete_face_tag_btn@2x.png"; sourceTree = "<group>"; };
+		FC156CD917484F20002FF09A /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		FC156CDA17484F28002FF09A /* disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclosure@2x.png"; sourceTree = "<group>"; };
 		FC25189D1746A27B00677D0D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		FC25189E1746A27B00677D0D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		FC2518A11746BC2300677D0D /* btnBegin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBegin.png; sourceTree = "<group>"; };
@@ -488,6 +504,14 @@
 		FC156C6D17472C1E002FF09A /* HUD */ = {
 			isa = PBXGroup;
 			children = (
+				FC156CD917484F20002FF09A /* disclosure.png */,
+				FC156CDA17484F28002FF09A /* disclosure@2x.png */,
+				FC156CD517484CE0002FF09A /* img_delete_face_tag_btn.png */,
+				FC156CD617484CE6002FF09A /* img_delete_face_tag_btn@2x.png */,
+				FC156CD317484BD1002FF09A /* fmv_overlay.png */,
+				FC156CD117484BA3002FF09A /* fmv_mail_btn.png */,
+				FC156CCF17484B8E002FF09A /* fmv_upload_btn.png */,
+				FC156CCD17484B77002FF09A /* fmv_share_btn.png */,
 				FC156CC8174822B5002FF09A /* multiselect_bar_share.png */,
 				FC156CC51747F140002FF09A /* side_menu_love_photos.png */,
 				FC156C6E17472C30002FF09A /* imgBottomToolbar.png */,
@@ -690,6 +714,14 @@
 				FC156CC417474AA7002FF09A /* background.jpg in Resources */,
 				FC156CC61747F140002FF09A /* side_menu_love_photos.png in Resources */,
 				FC156CC9174822B6002FF09A /* multiselect_bar_share.png in Resources */,
+				FC156CCE17484B7A002FF09A /* fmv_share_btn.png in Resources */,
+				FC156CD017484B91002FF09A /* fmv_upload_btn.png in Resources */,
+				FC156CD217484BA5002FF09A /* fmv_mail_btn.png in Resources */,
+				FC156CD417484BD3002FF09A /* fmv_overlay.png in Resources */,
+				FC156CD717484CEA002FF09A /* img_delete_face_tag_btn.png in Resources */,
+				FC156CD817484CEA002FF09A /* img_delete_face_tag_btn@2x.png in Resources */,
+				FC156CDB17484F32002FF09A /* disclosure.png in Resources */,
+				FC156CDC17484F32002FF09A /* disclosure@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

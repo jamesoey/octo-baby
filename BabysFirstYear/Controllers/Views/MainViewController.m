@@ -18,6 +18,7 @@
 #import "FullMomentViewController.h"
 #import "PopoverView.h"
 #import "TopBarView.h"
+#import "ShareViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController () {
@@ -71,10 +72,12 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,250,200) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imgIntroTile.png"]];
     self.tableView.bounces = NO;
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.layer.cornerRadius = 6.0f;
+    self.tableView.clipsToBounds = YES;
     
     self.topBarView = [[TopBarView alloc] init];
     [self.view addSubview:self.topBarView];
@@ -171,8 +174,71 @@
     [self.ideaButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
     self.ideaButton.frame = CGRectMake(15,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
     [self.view addSubview:self.ideaButton];
+    [self animateIdeaIcon];
+    
+    self.cameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *camera = [UIImage imageNamed:@"iconCameraSmall.png"];
+    [self.cameraButton setImage:camera forState:UIControlStateNormal];
+    [self.cameraButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
+    self.cameraButton.frame = CGRectMake(135,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
+    [self.view addSubview:self.cameraButton];
+    
+    self.progressButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *progress = [UIImage imageNamed:@"iconProgress.png"];
+    [self.progressButton setImage:progress forState:UIControlStateNormal];
+    [self.progressButton addTarget:self action:@selector(taskPopup) forControlEvents:UIControlEventTouchUpInside];
+    self.progressButton.frame = CGRectMake(265,self.bottomBar.frame.origin.y,ideas.size.width,ideas.size.height);
+    [self.view addSubview:self.progressButton];
     
 	// Do any additional setup after loading the view.
+}
+
+- (void) animateIdeaIcon {
+    
+    CALayer *layer = self.ideaButton.layer;
+    
+    CAKeyframeAnimation *boundsOvershootAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    
+    CATransform3D startingScale = CATransform3DScale (layer.transform, 1.0, 1.0, 1.0);
+    CATransform3D overshootScale = CATransform3DScale (layer.transform, 1.4, 1.4, 1.4);
+    
+    NSArray *boundsValues = [NSArray arrayWithObjects:[NSValue valueWithCATransform3D:startingScale],
+                             [NSValue valueWithCATransform3D:overshootScale],
+                             [NSValue valueWithCATransform3D:startingScale], nil];
+    [boundsOvershootAnimation setValues:boundsValues];
+    
+    NSArray *times = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0f],
+                      [NSNumber numberWithFloat:1.0f],
+                      [NSNumber numberWithFloat:2.0f], nil];
+    [boundsOvershootAnimation setKeyTimes:times];
+    
+    
+    NSArray *timingFunctions = [NSArray arrayWithObjects:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
+                                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                nil];
+    [boundsOvershootAnimation setTimingFunctions:timingFunctions];
+    boundsOvershootAnimation.fillMode = kCAFillModeForwards;
+    boundsOvershootAnimation.removedOnCompletion = NO;
+    boundsOvershootAnimation.repeatCount = HUGE_VAL;
+    boundsOvershootAnimation.autoreverses = YES;
+    
+    [self.ideaButton.layer addAnimation:boundsOvershootAnimation forKey:@"overshoot"];
+    
+    CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    alphaAnimation.toValue = @1;
+    alphaAnimation.duration = 0.3;
+    alphaAnimation.fillMode = kCAFillModeForwards;
+    alphaAnimation.removedOnCompletion = NO;
+    
+    alphaAnimation.delegate = self;
+    [self.ideaButton.layer addAnimation:alphaAnimation forKey:@"alphaAnim"];
+}
+
+- (void) stopAnimateIdeaIcon {
+    
+    [self.ideaButton.layer removeAllAnimations];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,9 +257,8 @@
                                              delegate:self];
     */
     
-    pv = [PopoverView showPopoverAtPoint:CGPointMake(20,500) inView:self.view withContentView:self.tableView delegate:self];
-    
-    
+    pv = [PopoverView showPopoverAtPoint:CGPointMake(37,500) inView:self.view withContentView:self.tableView delegate:self];
+    [self stopAnimateIdeaIcon];
 }
 
 - (UIImage *)squareWithColor:(UIColor *)color {
@@ -209,7 +274,12 @@
 
 
 - (void)tapped {
-    NSLog(@"Tapped!!!");
+    
+    FullMomentViewController *currentViewController = (FullMomentViewController*)[self.pageViewController.viewControllers objectAtIndex:0];
+    ShareViewController *svc = [[ShareViewController alloc] initWithTask:currentViewController.task];
+    
+    [self presentViewController:svc animated:YES completion:nil];
+    
 }
 
 
@@ -361,16 +431,18 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
-    headerView.layer.cornerRadius = 6.0f;
-    headerView.clipsToBounds = YES;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
     label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
-    label.backgroundColor = [UIColor blackColor];
     label.font = [UIFont boldSystemFontOfSize:14];
     label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
     
+    UIImageView *barBG = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"imgBottomToolbar.png"]];
+    barBG.frame = CGRectMake(0,0,tableView.bounds.size.width,40);
+    
+    [headerView addSubview:barBG];
     [headerView addSubview:label];
     return headerView;
 }
@@ -439,7 +511,11 @@
         }];
     }
 
-    
+    if (UIDeviceOrientationIsPortrait(self.interfaceOrientation)) {
+        self.tapView.userInteractionEnabled = YES;
+    } else {
+        self.tapView.userInteractionEnabled = NO;
+    }
     
 }
 

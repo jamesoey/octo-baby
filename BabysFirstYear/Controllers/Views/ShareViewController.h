@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
 @interface ShareViewController : UIViewController
+
+@property (nonatomic, strong) Task *task;
+
+- (id)initWithTask:(Task *)t;
 
 @end
