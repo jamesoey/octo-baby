@@ -245,7 +245,7 @@
     CGFloat w = img.size.width;
     CGFloat h = img.size.height;
     
-    CGImageRef partOfImageAsCG = CGImageCreateWithImageInRect(imageToBeResized, CGRectMake(0, 0.2*h, w, w));
+    CGImageRef partOfImageAsCG = CGImageCreateWithImageInRect(imageToBeResized, CGRectMake(0.2*h, 250, w*0.75, w*0.75));
 
     return [UIImage imageWithCGImage:partOfImageAsCG scale:1.0 orientation:[img imageOrientation]];
 }
