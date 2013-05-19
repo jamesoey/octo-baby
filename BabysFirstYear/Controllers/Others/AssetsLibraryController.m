@@ -24,17 +24,15 @@
     return _sharedController;
 }
 
-- (void)saveImage:(UIImage*)image toMoment:(Moment*)moment completion:(void (^)())successBlock {
+- (void)saveImage:(UIImage*)image completion:(void (^)(NSURL *assetURL))successBlock {
     CGImageRef imageRef = image.CGImage;
     
     [self.assetsLibrary writeImageToSavedPhotosAlbum:imageRef
                                          orientation:(ALAssetOrientation)[image imageOrientation]
                                      completionBlock:^(NSURL *assetURL, NSError *error) {
                                          if (error == nil) {
-                                             moment.uid = [assetURL absoluteString];
-                                             [SflyCore saveContext];
                                              if (successBlock) {
-                                                 successBlock();
+                                                 successBlock(assetURL);
                                              }
                                          } else {
                                              NSLog(@"ERROR: Could not write image to photo album");

@@ -306,11 +306,11 @@ kSecAttrGeneric				-		CFDataRef
     
 }
 
-+ (void)addLineAtY:(CGFloat)y toView:(UIView*)view {
++ (UIView*)horizLineAtY:(CGFloat)y {
     UIImage *dLine = [SflyUtility doubleLine];
     UIImageView *iView = [[UIImageView alloc] initWithImage:dLine];
     iView.frame = CGRectMake(20, y, dLine.size.width, dLine.size.height);
-    [view addSubview:iView];
+    return iView;
 }
 
 

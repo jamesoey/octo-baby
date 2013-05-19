@@ -16,6 +16,23 @@
 @property (nonatomic, retain) UIButton *cameraButton;
 @property (nonatomic, retain) UIButton *cameraRollButton;
 @property (nonatomic, retain) UIView *cameraRollView;
+
+@property (nonatomic, retain) UIButton *looksGreatButton;
+@property (nonatomic, retain) UIButton *tryAgainButton;
+
+@property (nonatomic, retain) UIView *topLine;
+@property (nonatomic, retain) UIView *botLine;
+
+@property (nonatomic, retain) UILabel *cameraRollLabel;
+@property (nonatomic, retain) UIImageView *cameraRollIcon;
+@property (nonatomic, retain) UIImageView *forwardArrow;
+
+@property (nonatomic, retain) UIButton *backButton;
+
+@property (nonatomic, retain) UIImageView *previewImageView;
+@property (nonatomic, retain) UIImageView *cameraIcon;
+@property (nonatomic, retain) UILabel *cameraLabel;
+
 - (id)initWithFrame:(CGRect)frame task:(Task*)t;
 
 @end

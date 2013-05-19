@@ -10,4 +10,6 @@
 
 @interface TopBarView : UIView
 
+@property (nonatomic, retain) UIButton *iconMenuButton;
+
 @end
