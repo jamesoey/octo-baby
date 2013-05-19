@@ -179,7 +179,7 @@
         
         UIImage *croppedImage = [self cropCameraImage:currentImage];
         
-        [captureMomentView.previewImageView setImage:croppedImage];
+        [captureMomentView.previewImageView setImage:currentImage];
         captureMomentView.previewImageView.hidden = NO;
 
         [[AssetsLibraryController sharedController] saveImage:currentImage completion:^(NSURL *assetURL) {
