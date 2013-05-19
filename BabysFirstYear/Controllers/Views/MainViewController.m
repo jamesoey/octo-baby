@@ -276,7 +276,7 @@
 - (void)tapped {
     
     FullMomentViewController *currentViewController = (FullMomentViewController*)[self.pageViewController.viewControllers objectAtIndex:0];
-    ShareViewController *svc = [[ShareViewController alloc] initWithTask:currentViewController.task];
+    ShareViewController *svc = [[ShareViewController alloc] initWithTask:currentViewController.task andProject:project];
     
     [self presentViewController:svc animated:YES completion:nil];
     
