@@ -12,6 +12,7 @@
 #import "MainViewController.h"
 #import "Project.h"
 #import "FullMomentViewController.h"
+#import "CaptureMomentViewController.h"
 
 @implementation AppDelegate
 
@@ -199,7 +200,15 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"here");
+    if ([[userInfo valueForKey:@"type"] isEqualToString:@"0"]) {
+        UIViewController *currentVC = self.navController.visibleViewController;
+        NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
+        NSArray *tasks = [[SflyData project].tasks sortedArrayUsingDescriptors:@[weekSort]];
+
+        CaptureMomentViewController *cmViewController =
+        [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:19]];
+        [currentVC presentViewController:cmViewController animated:YES completion:nil];
+    }
 }
 
 @end
