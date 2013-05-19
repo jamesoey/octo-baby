@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) NSNumber * weeksFromStart;
 @property (nonatomic, retain) NSString * caption;
+@property (nonatomic, retain) NSString * instruction;
 @property (nonatomic, retain) Moment *moment;
 @property (nonatomic, retain) Project *projects;
 

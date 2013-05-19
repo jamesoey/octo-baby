@@ -49,12 +49,16 @@
     self.cameraIcon.frame = CGRectMake((320-cameraIconImage.size.width)/2.0, 180, cameraIconImage.size.width, cameraIconImage.size.height);
     [self addSubview:self.cameraIcon];
     
-    NSString *cameraLabelText = [NSString stringWithFormat:@"Let's get started. Take a photo of %@ right now.", [[SflyData project] name]];
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"BABY" options:0 error:nil];
+    NSMutableString *mutableCap = [NSMutableString stringWithString:self.task.instruction];
+    [regex replaceMatchesInString:mutableCap options:0 range:NSMakeRange(0, [mutableCap length]) withTemplate:[[SflyData project] name]];
+
     self.cameraLabel = [[UILabel alloc] initWithFrame:CGRectMake((320-200)/2.0, 240, 200, 80)];
     self.cameraLabel.backgroundColor = [UIColor clearColor];
     self.cameraLabel.numberOfLines = 0;
     self.cameraLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.cameraLabel.text = cameraLabelText;
+    self.cameraLabel.text = mutableCap;
     [self.cameraLabel setTextAlignment:NSTextAlignmentCenter];
     self.cameraLabel.textColor = UIColorFromRGB(0xA5A09D);
     [self addSubview:self.cameraLabel];

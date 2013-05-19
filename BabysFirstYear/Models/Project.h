@@ -18,8 +18,12 @@
 @property (nonatomic, retain) NSSet *tasks;
 @property (nonatomic, retain) NSNumber *isBoy;
 
-+ (Project*)projectWithName:(NSString*)name;
++ (Project*)projectWithName:(NSString*)name isBoy:(BOOL)isBoy;
 
+// his/her
+- (NSString*)possessive;
+// him/her
+- (NSString*)objectivePronoun;
 @end
 
 @interface Project (CoreDataGeneratedAccessors)

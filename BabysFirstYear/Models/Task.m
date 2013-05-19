@@ -18,6 +18,7 @@
 @dynamic uid;
 @dynamic weeksFromStart;
 @dynamic caption;
+@dynamic instruction;
 @dynamic moment;
 @dynamic projects;
 

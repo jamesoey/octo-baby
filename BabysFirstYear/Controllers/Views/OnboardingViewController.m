@@ -12,6 +12,7 @@
 #import "MainViewController.h"
 #import "SflyData.h"
 #import "SflyCore.h"
+#import "CaptureMomentViewController.h"
 
 @interface OnboardingViewController () {
     OnboardingView *onboardingView;
@@ -84,23 +85,26 @@
 - (void) submitProject {
     if (![self validateForm]) {
     } else {
-        [Project projectWithName:onboardingView.nameField.text];
+        [Project projectWithName:onboardingView.nameField.text isBoy:onboardingView.boyButton.selected];
 
         Project *project = [SflyData project];
         project.startTime = onboardingView.birthdatePicker.date;
-        if (onboardingView.girlButton.selected) {
-            project.isBoy = @NO;
-        } else {
-            project.isBoy = @YES;
-        }
-        [self performSelector:@selector(presentNextView:) withObject:project afterDelay:5];
+        [self performSelector:@selector(presentNextView:) withObject:project afterDelay:3];
     }
 }
 
 - (void)presentNextView:(Project*)project {
-    [SflyCore saveContext];    
-    MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
-    [self presentViewController:mvController animated:YES completion:nil];
+    [SflyCore saveContext];
+
+    NSSortDescriptor *weekSort = [[NSSortDescriptor alloc] initWithKey:@"weeksFromStart" ascending:YES];
+    NSArray *tasks = [project.tasks sortedArrayUsingDescriptors:@[weekSort]];
+
+        MainViewController *mvController = [[MainViewController alloc] initWithProject:project];
+        [self presentViewController:mvController animated:YES completion:^{
+            CaptureMomentViewController *cmViewController =
+            [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:0]];
+            [mvController presentViewController:cmViewController animated:YES completion:nil];
+        }];
 }
 
 #pragma mark - buttons
