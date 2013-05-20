@@ -48,9 +48,10 @@
     self.nameField.layer.cornerRadius = 6.0f;
     self.nameField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
     self.nameField.layer.borderWidth = 1.0f;
-    self.nameField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.nameField.textAlignment = NSTextAlignmentCenter;
     self.nameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     self.nameField.autocapitalizationType = UITextAutocapitalizationTypeWords;
+
     [self addSubview: self.nameField];
 
     self.dateField = [[UITextField alloc] initWithFrame:CGRectMake(20, 270, 280, 30)];
@@ -61,7 +62,7 @@
     self.dateField.layer.cornerRadius = 6.0f;
     self.dateField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
     self.dateField.layer.borderWidth = 1.0f;
-    self.dateField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.dateField.textAlignment = NSTextAlignmentCenter;
     self.dateField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview: self.dateField];
 

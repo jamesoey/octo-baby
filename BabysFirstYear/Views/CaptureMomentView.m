@@ -105,7 +105,7 @@
     self.taskNameTextField.layer.cornerRadius = 6.0f;
     self.taskNameTextField.layer.borderColor = [[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0] CGColor];
     self.taskNameTextField.layer.borderWidth = 1.0f;
-    self.taskNameTextField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    self.taskNameTextField.textAlignment = NSTextAlignmentCenter;
     self.taskNameTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [self addSubview:self.taskNameTextField];
 }
