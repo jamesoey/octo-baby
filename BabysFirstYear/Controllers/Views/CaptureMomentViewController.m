@@ -295,8 +295,9 @@
     }
     [task setMoment:moment];
     moment.uid = [currentURL absoluteString];
-    [SflyCore saveContext];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [SflyCore saveContextWithCompletion:^ {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)touchedTryAgain {

@@ -103,15 +103,27 @@
     self.pdfView = [[UIView alloc] initWithFrame:CGRectMake(0,0,400,320*[tasks count]+20)];
     
     int yoffset = 20;
+    int index = 0;
     for (Task *t in tasks) {
-        
         UIImageView *photo = [[UIImageView alloc] initWithFrame:CGRectMake(50,yoffset,300,300)];
+        UIImageView *specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+        if (index == 0) {
+            specialBg.frame = CGRectMake(50,yoffset,300,300);
+            photo.frame = CGRectMake(75,yoffset+55,250,188);
+            [self.pdfView addSubview:specialBg];
+        } else if (index == 19) {
+            specialBg.frame = CGRectMake(50,yoffset,300,300);
+            photo.frame = CGRectMake(55,yoffset+25,188,250);
+            [self.pdfView addSubview:specialBg];
+        }
+
         [[AssetsLibraryController sharedController] imageForURL:t.moment.uid success:^(UIImage *image) {
             photo.image = image;
         } failureBlock:^(NSError *error) {
         }];
-        yoffset += 320;
         [self.pdfView addSubview:photo];
+        yoffset += 320;
+        index++;
     }
 }
 

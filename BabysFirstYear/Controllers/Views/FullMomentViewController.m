@@ -75,6 +75,8 @@
     
     self.photo = [[UIImageView alloc] init];
     
+    //[self.task addObserver:self forKeyPath:@"moment" options:NSKeyValueObservingOptionNew context:nil];
+    
     if (UIDeviceOrientationIsLandscape(self.interfaceOrientation)) {
         
         
@@ -90,7 +92,7 @@
             if (self.index == 0) {
                 self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
                 self.specialBg.frame = CGRectMake(9,18,230,230);
-                self.photo.frame = CGRectMake(25,35,200,200);
+                self.photo.frame = CGRectMake(25,60,200,150);
             } else {
                 self.photo.frame = CGRectMake(9,18,230,230);
             }
@@ -98,7 +100,15 @@
             UIImage *bookOverLayRight = [UIImage imageNamed:@"imgRightSpineShadow.png"];
             self.spine = [[UIImageView alloc] initWithImage:bookOverLayRight];
             self.spine.frame = CGRectMake(0,0,bookOverLayRight.size.width, bookOverLayRight.size.height-1);
-            self.photo.frame = CGRectMake(30,18,230,230);
+            
+            // Special case for the 20th task (index 19)
+            if (self.index == 19) {
+                self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+                self.specialBg.frame = CGRectMake(30,18,230,230);
+                self.photo.frame = CGRectMake(70,35,150,200);
+            } else {
+                self.photo.frame = CGRectMake(30,18,230,230);
+            }
         }
     } else {
         UIImage *bookOverLayRight = [UIImage imageNamed:@"imgRightSpineShadow.png"];
@@ -109,7 +119,11 @@
         if (self.index == 0) {
             self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
             self.specialBg.frame = CGRectMake(30,18,230,230);
-            self.photo.frame = CGRectMake(45,35,200,200);
+            self.photo.frame = CGRectMake(45,60,200,150);
+        } else if (self.index == 19) {
+            self.specialBg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.jpg"]];
+            self.specialBg.frame = CGRectMake(30,18,230,230);
+            self.photo.frame = CGRectMake(75,35,150,200);
         } else {
             self.photo.frame = CGRectMake(30,18,230,230);
         }
@@ -128,8 +142,24 @@
     [self.view addSubview:self.spine];
     [self.view addSubview:self.specialBg];
     [self.view addSubview:self.photo];
-    [self refreshPhoto];
+    
+    [[AssetsLibraryController sharedController] imageForURL:task.moment.uid success:^(UIImage *image) {
+        self.photo.image = image;
+        [self animateIn];
+    } failureBlock:^(NSError *error) {
+        NSLog(@"ERROR: Cannot add image to FMV image view");
+    }];
+    
 }
+
+#pragma mark - Observation Methods
+
+/*
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.task) {
+        [self refreshPhoto];
+    }
+}*/
 
 - (void)refreshPhoto {
     [[AssetsLibraryController sharedController] imageForURL:task.moment.uid success:^(UIImage *image) {

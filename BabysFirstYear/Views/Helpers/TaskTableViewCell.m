@@ -33,7 +33,7 @@
 
 - (void)initializeView {
     
-    self.contentView.frame = CGRectMake(0,0,360, 90);
+    self.contentView.frame = CGRectMake(0,0,360, 70);
     self.clipsToBounds = YES;
     self.backgroundColor = [UIColor clearColor];
     

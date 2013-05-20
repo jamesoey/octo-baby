@@ -40,6 +40,24 @@ static UIViewController *mainVC;
                   );
 }
 
++ (void)saveContextWithCompletion:(void (^)(void))completion {
+    dispatch_async(dispatch_get_main_queue(),
+                   ^(void) {
+                       //DLog(@"INFO: saving context");
+                       NSError *error = nil;
+                       NSManagedObjectContext *context = [SflyCore context];
+                       if (context != nil) {
+                           if ([context hasChanges] && ![context save:&error]) {
+                               NSLog(@"Error in context save: %@, %@", error, [error userInfo]);
+                           } else {
+                               if (completion) completion();
+                           }
+                       }
+                   }
+                   
+                );
+}
+
 + (NSOperationQueue*)imageQueue {
     static NSOperationQueue *queue;
     if (queue == NULL) {

@@ -59,6 +59,7 @@
     self.view = mainView;
 }*/
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -107,8 +108,6 @@
     [self.view addSubview:self.calBar];
     
     
-    
-    
     //Step 1
     //Instantiate the UIPageViewController.
     self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
@@ -128,6 +127,8 @@
                                       direction:UIPageViewControllerNavigationDirectionForward
                                        animated:NO
                                      completion:nil];
+    
+    [contentViewController.task.moment addObserver:self forKeyPath:@"uid" options:NSKeyValueObservingOptionNew context:nil];
     
     //Step 4:
     //ViewController containment steps
@@ -289,7 +290,14 @@
     
 }
 
-
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    FullMomentViewController *currentViewController = [self.pageViewController.viewControllers objectAtIndex:0];
+    [currentViewController refreshPhoto];
+    if (object == currentViewController.task.moment) {
+        NSArray *viewControllers = [NSArray arrayWithObject:currentViewController];
+        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
+    }
+}
 
 #pragma mark - UIPageViewControllerDataSource Methods
 
@@ -410,7 +418,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [tasks count];
+	//return [tasks count];
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -419,7 +428,7 @@
         cell = [[TaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TaskTableViewCell"];
     }
     
-    [cell updateWithTask:[tasks objectAtIndex:indexPath.row]];
+    [cell updateWithTask:[tasks objectAtIndex:indexPath.row+18]];
     return cell;
 }
 

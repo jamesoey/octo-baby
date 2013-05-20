@@ -24,6 +24,7 @@
 + (NSManagedObjectContext*)context;
 + (NSString*)documentsDirectory;
 + (void)saveContext;
++ (void)saveContextWithCompletion:(void (^)(void))completion;
 + (NSOperationQueue*)imageQueue;
 + (CGFloat)drawScale;
 + (void)storeMainViewController:(UIViewController*)vc;
