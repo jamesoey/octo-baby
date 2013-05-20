@@ -1,6 +1,6 @@
 <?php
 $payload = '{
-     "aps" : { "alert" : "Congratulations, Hayley is 1 month old - come in and save $10 on your next Baby Gap purchase!"},
+     "aps" : { "alert" : "Congratulations, Hailey is 1 month old - come in and save $10 on your next Baby Gap purchase!"},
      "type" : "1"}';
 $deviceToken = "2b0b1fdb064f522e51877bcf772fa5e53519cb19a9ba1b56c014c621e939d965";
 
