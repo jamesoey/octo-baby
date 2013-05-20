@@ -1,6 +1,6 @@
 <?php
 $payload = '{
-     "aps" : { "alert" : "Capture a picture of Hayley with her smile."},
+     "aps" : { "alert" : "Capture a picture of Hailey with her smile."},
      "type" : "0"}';
 $deviceToken = "2b0b1fdb064f522e51877bcf772fa5e53519cb19a9ba1b56c014c621e939d965";
 
