@@ -22,6 +22,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RewardsViewController.h"
 
+#define TASK_OFFSET 18
+
 @interface MainViewController () {
     Project *project;
     MainView *mainView;
@@ -428,7 +430,7 @@
         cell = [[TaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TaskTableViewCell"];
     }
     
-    [cell updateWithTask:[tasks objectAtIndex:indexPath.row+18]];
+    [cell updateWithTask:[tasks objectAtIndex:indexPath.row+TASK_OFFSET]];
     return cell;
 }
 
@@ -440,7 +442,7 @@
     [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
 
     CaptureMomentViewController *cmViewController =
-       [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:indexPath.row+18]];
+       [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:indexPath.row+TASK_OFFSET]];
     [self presentViewController:cmViewController animated:YES completion:nil];
 }
 

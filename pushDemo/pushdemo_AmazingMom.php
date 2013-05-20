@@ -1,6 +1,6 @@
 <?php
 $payload = '{
-     "aps" : { "alert" : "You are an amazing mom! Your first baby book is done! Save $20 when you order it today!"},
+     "aps" : { "alert" : "You are an amazing mom! Your first baby book is done! Save $15 when you order it today!"},
      "type" : "2"}';
 $deviceToken = "2b0b1fdb064f522e51877bcf772fa5e53519cb19a9ba1b56c014c621e939d965";
 

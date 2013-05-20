@@ -45,25 +45,25 @@
     [self addSubview:rewardLabel0];
 
     UILabel *rewardLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(100, 380, 230, 40)];
-    rewardLabel1.text = @"40% off a case of diapers";
+    rewardLabel1.text = @"$5 off a Photo Book";
     rewardLabel1.textColor = UIColorFromRGB(0x666666);
     rewardLabel1.backgroundColor = [UIColor clearColor];
     [self addSubview:rewardLabel1];
 
     UILabel *rewardLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(100, 320, 230, 40)];
-    rewardLabel2.text = @"1 Free Photo Magnet";
+    rewardLabel2.text = @"$10 off a Photo Book";
     rewardLabel2.textColor = UIColorFromRGB(0x666666);
     rewardLabel2.backgroundColor = [UIColor clearColor];
     [self addSubview:rewardLabel2];
 
     UILabel *rewardLabel3 = [[UILabel alloc] initWithFrame:CGRectMake(100, 225, 230, 40)];
-    rewardLabel3.text = @"$20 off a Photo Book";
+    rewardLabel3.text = @"$15 off a Photo Book";
     rewardLabel3.textColor = UIColorFromRGB(0x666666);
     rewardLabel3.backgroundColor = [UIColor clearColor];
     [self addSubview:rewardLabel3];
 
     UILabel *rewardLabel4 = [[UILabel alloc] initWithFrame:CGRectMake(100, 130, 230, 40)];
-    rewardLabel4.text = @"60% off a Photo Book";
+    rewardLabel4.text = @"$20 off a Photo Book";
     rewardLabel4.textColor = UIColorFromRGB(0x666666);
     rewardLabel4.backgroundColor = [UIColor clearColor];
     [self addSubview:rewardLabel4];
