@@ -440,7 +440,7 @@
     [pv performSelector:@selector(dismiss) withObject:nil afterDelay:0.0f];
 
     CaptureMomentViewController *cmViewController =
-       [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:indexPath.row]];
+       [[CaptureMomentViewController alloc] initWithTask:[tasks objectAtIndex:indexPath.row+18]];
     [self presentViewController:cmViewController animated:YES completion:nil];
 }
 
